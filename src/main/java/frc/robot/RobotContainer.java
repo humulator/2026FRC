@@ -276,7 +276,7 @@ public class RobotContainer
     // Trigger intakeReverse = driverXbox.controller.back();
     Trigger L1WithoutL2 = shooterController.leftBumper();//.and(shooterController.leftTrigger().negate());
     Trigger L2WithoutL1 = shooterController.leftTrigger();
-    Trigger intakeReverse = driverXbox.controller.back();
+    Trigger intakeReverse = shooterController.back();
 
     //Intake stuff
     L1WithoutL2.onTrue(new ParallelCommandGroup(new IntakeToDown(intakeArm)));
