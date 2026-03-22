@@ -1,0 +1,109 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.5929397590361445,
+        "y": 7.422590361445783
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.6232168674698793,
+        "y": 7.378879518072289
+      },
+      "isLocked": false,
+      "linkedName": "BlueLeftTrenchedLineFacingToHub"
+    },
+    {
+      "anchor": {
+        "x": 0.5113253012048191,
+        "y": 7.116614457831325
+      },
+      "prevControl": {
+        "x": 0.555036144578313,
+        "y": 7.739493975903613
+      },
+      "nextControl": {
+        "x": 0.49112936536808083,
+        "y": 6.828822372157804
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 0.5113253012048191,
+        "y": 5.138698795180724
+      },
+      "prevControl": {
+        "x": 0.5314209696647532,
+        "y": 5.641090506679079
+      },
+      "nextControl": {
+        "x": 0.5003975903614457,
+        "y": 4.865506024096386
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 2.838927710843373,
+        "y": 4.996638554216868
+      },
+      "prevControl": {
+        "x": 1.2762650602409638,
+        "y": 5.291686746987953
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "BlueLeftAfterFinishingPitAreaFacingHub"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0525984251968417,
+      "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 2.0324409448818836,
+      "rotationDegrees": 90.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.7992805755395845,
+      "maxWaypointRelativePos": 2.455035971223007,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 1.5,
+        "maxAngularVelocity": 360.0,
+        "maxAngularAcceleration": 540.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 540.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -32.47119229084843
+  },
+  "reversed": false,
+  "folder": "BlueLeftAutos",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": true
+}

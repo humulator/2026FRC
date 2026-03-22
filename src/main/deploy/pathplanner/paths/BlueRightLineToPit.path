@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 3.4290240963855423,
+        "y": 0.6364819277108438
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 0.9238433734939759,
+        "y": 0.800397590361447
+      },
+      "isLocked": false,
+      "linkedName": "BlueRightTrenchedLineFacingToHub"
+    },
+    {
+      "anchor": {
+        "x": 0.4676144578313255,
+        "y": 0.6364819277108438
+      },
+      "prevControl": {
+        "x": 1.0835535975245838,
+        "y": 1.4577341139685178
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "BlueRightHumanStation"
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 540.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "reversed": false,
+  "folder": "BlueRightAutos",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 90.0
+  },
+  "useDefaultConstraints": true
+}

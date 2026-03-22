@@ -1,0 +1,125 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 4.0,
+        "y": 7.422590361445783
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 5.000000000000001,
+        "y": 7.422590361445783
+      },
+      "isLocked": false,
+      "linkedName": "BlueLeftTrenchedLineFacingToAllianceStation"
+    },
+    {
+      "anchor": {
+        "x": 7.723614457831324,
+        "y": 6.384457831325301
+      },
+      "prevControl": {
+        "x": 7.712686746987952,
+        "y": 7.4553734939759035
+      },
+      "nextControl": {
+        "x": 7.730974398105425,
+        "y": 5.6631836844634
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 7.854746987951808,
+        "y": 4.7453012048192775
+      },
+      "prevControl": {
+        "x": 7.726423106589274,
+        "y": 5.344145984511122
+      },
+      "nextControl": {
+        "x": 7.920313253012047,
+        "y": 4.4393253012048195
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 6.292084337349398,
+        "y": 6.9308433734939765
+      },
+      "prevControl": {
+        "x": 7.23583125932356,
+        "y": 6.447734830102442
+      },
+      "nextControl": {
+        "x": 5.374156626506023,
+        "y": 7.400734939759037
+      },
+      "isLocked": false,
+      "linkedName": null
+    },
+    {
+      "anchor": {
+        "x": 3.5929397590361445,
+        "y": 7.422590361445783
+      },
+      "prevControl": {
+        "x": 4.8578197041891515,
+        "y": 7.36796169502036
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": "BlueLeftTrenchedLineFacingToHub"
+    }
+  ],
+  "rotationTargets": [
+    {
+      "waypointRelativePos": 1.0475590551181093,
+      "rotationDegrees": 90.0
+    },
+    {
+      "waypointRelativePos": 2.029606299212578,
+      "rotationDegrees": 100.0
+    }
+  ],
+  "constraintZones": [
+    {
+      "name": "Constraints Zone",
+      "minWaypointRelativePos": 0.8395683453237407,
+      "maxWaypointRelativePos": 2.2892086330935344,
+      "constraints": {
+        "maxVelocity": 1.0,
+        "maxAcceleration": 3.0,
+        "maxAngularVelocity": 540.0,
+        "maxAngularAcceleration": 720.0,
+        "nominalVoltage": 12.0,
+        "unlimited": false
+      }
+    }
+  ],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 3.0,
+    "maxAngularVelocity": 540.0,
+    "maxAngularAcceleration": 720.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "reversed": false,
+  "folder": "BlueLeftAutos",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": -90.0
+  },
+  "useDefaultConstraints": false
+}
