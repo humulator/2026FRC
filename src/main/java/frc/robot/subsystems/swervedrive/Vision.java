@@ -338,16 +338,16 @@ public class Vision
      * Left Camera
      */
     LEFT_CAM("USB_Camera", //ROLL, PITCH, YAW (LEFT)
-             new Rotation3d(0, Math.toRadians(0), Math.toRadians(-48)),
-             new Translation3d(Units.inchesToMeters(8), //FORWARD
-                               Units.inchesToMeters(-10), //LEFT
-                               Units.inchesToMeters(6.7)), //UP
+             new Rotation3d(0, Math.toRadians(0), Math.toRadians(-42)),
+             new Translation3d(Units.inchesToMeters(10.125), //FORWARD
+                               Units.inchesToMeters(-11), //LEFT
+                               Units.inchesToMeters(7.375)), //UP
              VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
     /**
      * Right Camera
      */
     RIGHT_CAM("5031_Arducam",
-              new Rotation3d(0, Math.toRadians(-24), Math.toRadians(0)),
+              new Rotation3d(0, Math.toRadians(-25), Math.toRadians(0)),
               new Translation3d(Units.inchesToMeters(12.25),
                                 Units.inchesToMeters(7),
                                 Units.inchesToMeters(13.6)),

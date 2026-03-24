@@ -41,6 +41,7 @@ public class Candle extends SubsystemBase {
     blinkingGreen
   }
   ledState state = ledState.red;
+  ledState prevState = ledState.red;
 
 
   public Candle(Aimmer aimmer, Turret turret, Shooter shooter, IntakeArm intakeArm, IntakeRollers intakeRollers, Kickup kickup) {
@@ -79,18 +80,21 @@ public class Candle extends SubsystemBase {
       state = ledState.red;
     }
 
-    if (state == ledState.blinkingGreen) {
-      candle.setControl(greenBlink);
+    if (prevState != state) {
+      if (state == ledState.blinkingGreen) {
+        candle.setControl(greenBlink);
+      }
+      if (state == ledState.green) {
+        candle.setControl(greenSolid);
+      }
+      if (state == ledState.blinkingRed) {
+        candle.setControl(redBlink);
+      }
+      if (state == ledState.red) {
+        candle.setControl(redSolid);
+      }
     }
-    if (state == ledState.green) {
-      candle.setControl(greenSolid);
-    }
-    if (state == ledState.blinkingRed) {
-      candle.setControl(redBlink);
-    }
-    if (state == ledState.red) {
-      candle.setControl(redSolid);
-    }
+    prevState = state;
 
   }
 }
