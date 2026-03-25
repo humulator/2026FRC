@@ -313,6 +313,12 @@ public class RobotContainer
         () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0)
     ).withTimeout(0.5));
 
+    Trigger shooterIsNear = new Trigger(() -> shooter.isCloseEnough());
+    shooterIsNear.onTrue(Commands.runEnd(
+        () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 0)
+    ).withTimeout(0.5));
+
 
 
     //Auto Align 
