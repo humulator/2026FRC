@@ -18,6 +18,7 @@ import edu.wpi.first.math.trajectory.TrapezoidProfile.Constraints;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.Filesystem;
+import edu.wpi.first.wpilibj.GenericHID.RumbleType;
 import edu.wpi.first.wpilibj.RobotBase;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -58,6 +59,7 @@ import frc.robot.subsystems.swervedrive.Shooter;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem.swervePosition;
 import frc.robot.subsystems.swervedrive.Turret;
+import frc.robot.subsystems.swervedrive.IntakeArm.IntakeArmState;
 
 import static edu.wpi.first.units.Units.Degrees;
 
@@ -260,7 +262,7 @@ public class RobotContainer
     //   , shooter));
     NamedCommands.registerCommand("IntakeToDown", new IntakeToDown(intakeArm));
     NamedCommands.registerCommand("IntakeRunForward", new IntakeRunForward(intakeRollers));
-    NamedCommands.registerCommand("IntakeToUp", new IntakeToDown(intakeArm));
+    NamedCommands.registerCommand("IntakeToUp", new IntakeToUp(intakeArm));
     NamedCommands.registerCommand("IntakeRunBackward", new IntakeRunBackward(intakeRollers));
     NamedCommands.registerCommand("IntakeRunZero", new IntakeRunZero(intakeRollers));
     NamedCommands.registerCommand("CalibrateTurret", new CalibrateTurret(aimmer, turret));
@@ -292,8 +294,8 @@ public class RobotContainer
     turret.setDefaultCommand(new DefaultTurret(shooter, turret, shooterController));
     shooterController.y().whileTrue(new TurretAuto(turret, drivebase, shooter));
     shooterController.x().whileTrue(new TurretAutoPass(turret, drivebase, shooter));
-    shooterController.a().whileTrue(new TurretAutoWithoutShooter(turret, drivebase, shooter));
-    shooterController.b().whileTrue(new TurretAutoPassWithoutShooter(turret, drivebase, shooter));
+    shooterController.a().whileTrue(new TurretAutoWithoutShooter(turret, drivebase, shooter, shooterController));
+    shooterController.b().whileTrue(new TurretAutoPassWithoutShooter(turret, drivebase, shooter, shooterController));
 
     // required shooting and feeding
     R1WithoutR2.whileTrue(new WhileHeldShooterOnly(shooter, turret, shooterController));
@@ -303,8 +305,13 @@ public class RobotContainer
     
 
     //gyro reset
-    driverXbox.controller.x().onTrue(new InstantCommand(() -> driverXbox.setOffset(drivebase.getPose().getRotation().getDegrees())));
+    driverXbox.controller.x().onTrue(new InstantCommand(() -> driverXbox.setOffset(drivebase.getPose().getRotation().getDegrees() + 180)));
     driverXbox.controller.b().onTrue(new InstantCommand(() -> driverXbox.setOffset(0)));
+    Trigger intakeArmNear = new Trigger(() -> intakeArm.isNearTarget(Constants.intakeDownSetpoint));
+    intakeArmNear.onTrue(Commands.runEnd(
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0)
+    ).withTimeout(0.5));
 
 
 

@@ -99,6 +99,7 @@ public class Turret extends SubsystemBase {
     if (calibrated == turretCalibrated.CALIBRATED) {
       targetTurretSetpoint = aimmer.inBounds(degrees);
       turret.setControl(PIDTurret.withPosition(targetTurretSetpoint).withVelocity(ff));
+      //System.out.println("DEGRESSWORKS");
     }
   }
 

@@ -54,7 +54,7 @@ public static final double standardFeederSpeed = 55;
 public static final double kickupStandardSpeed = 55;
 
 public static final double intakeUpSetpoint = 0; //with manual pid 108
-public static final double intakeDownSetpoint = 16.6; //with manual pid -34
+public static final double intakeDownSetpoint = 16; //with manual pid -34
 
 // speeds
 public static final double IntakeForwardSpeed = -12;

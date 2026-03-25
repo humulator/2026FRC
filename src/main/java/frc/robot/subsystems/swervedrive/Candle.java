@@ -4,6 +4,8 @@
 
 package frc.robot.subsystems.swervedrive;
 
+import com.ctre.phoenix.led.Animation;
+import com.ctre.phoenix6.controls.EmptyAnimation;
 import com.ctre.phoenix6.controls.FireAnimation;
 import com.ctre.phoenix6.controls.LarsonAnimation;
 import com.ctre.phoenix6.controls.RainbowAnimation;
@@ -15,11 +17,12 @@ import com.ctre.phoenix6.controls.TwinkleAnimation;
 import com.ctre.phoenix6.hardware.CANdle;
 import com.ctre.phoenix6.signals.RGBWColor;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class Candle extends SubsystemBase {
 
-  CANdle candle = new CANdle(40);
+  CANdle candle = new CANdle(51);
   RainbowAnimation animation = new RainbowAnimation(0,67);
   SolidColor redSolid = new SolidColor(0, 67);
   StrobeAnimation redBlink = new StrobeAnimation(0, 67);
@@ -53,9 +56,9 @@ public class Candle extends SubsystemBase {
       this.kickup = kickup;
 
       redSolid.withColor(new RGBWColor(250, 0, 0, 0));
-      redBlink.withColor(new RGBWColor(250, 0, 0, 0)).withFrameRate(2);
+      redBlink.withColor(new RGBWColor(250, 0, 0, 0)).withFrameRate(7);
       greenSolid.withColor(new RGBWColor(0, 250, 0, 0));
-      greenBlink.withColor(new RGBWColor(0, 250, 0, 0)).withFrameRate(2);
+      greenBlink.withColor(new RGBWColor(0, 250, 0, 0)).withFrameRate(7);
 
   }
 
@@ -66,6 +69,9 @@ public class Candle extends SubsystemBase {
   public void periodic() {
     shooterRPSCloseEnough = shooter.isCloseEnough();
     turretInBounds = aimmer.getInBounds();
+    SmartDashboard.putBoolean("LEDSHOOTERRPSCLOSEENOUGH", shooterRPSCloseEnough);
+    SmartDashboard.putBoolean("LEDTURRETINBOUNDS", turretInBounds);
+    
 
     if (shooterRPSCloseEnough && turretInBounds) {
       state = ledState.blinkingGreen;
@@ -81,20 +87,21 @@ public class Candle extends SubsystemBase {
     }
 
     if (prevState != state) {
+      candle.setControl(new EmptyAnimation(0));
       if (state == ledState.blinkingGreen) {
-        candle.setControl(greenBlink);
+        candle.setControl(greenBlink.withSlot(0));
       }
       if (state == ledState.green) {
         candle.setControl(greenSolid);
       }
       if (state == ledState.blinkingRed) {
-        candle.setControl(redBlink);
+        candle.setControl(redBlink.withSlot(0));
       }
       if (state == ledState.red) {
         candle.setControl(redSolid);
       }
+      prevState = state;
     }
-    prevState = state;
 
   }
 }

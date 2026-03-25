@@ -10,6 +10,7 @@ import com.ctre.phoenix6.controls.VoltageOut;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.NeutralModeValue;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.units.measure.Voltage;
@@ -41,18 +42,18 @@ public class IntakeArm extends SubsystemBase {
   public IntakeArm() {
     TalonFXConfiguration intakeArmConfig = new TalonFXConfiguration();
 
-    intakeArmConfig.Slot0.kP = 0.5;
+    intakeArmConfig.Slot0.kP = 0.4;
     intakeArmConfig.Slot0.kI = 0;
     intakeArmConfig.Slot0.kD = 0;
 
-    intakeArmConfig.CurrentLimits.StatorCurrentLimit = 60;
+    intakeArmConfig.CurrentLimits.StatorCurrentLimit = 40;
     intakeArmConfig.CurrentLimits.SupplyCurrentLimit = 40;
 
     intakeArmConfig.CurrentLimits.StatorCurrentLimitEnable = true;
     intakeArmConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
 
-    intakeArmConfig.Voltage.PeakForwardVoltage = 3;
-    intakeArmConfig.Voltage.PeakReverseVoltage = -3;
+    intakeArmConfig.Voltage.PeakForwardVoltage = 2;
+    intakeArmConfig.Voltage.PeakReverseVoltage = -2;
 
     intakeArmConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.2;
 
@@ -63,6 +64,8 @@ public class IntakeArm extends SubsystemBase {
     //NOT SET RIGHT NOW
     intakeArmConfig.Feedback.SensorToMechanismRatio = Constants.intakeArmConversionFactor;
     intakeArmConfig.Feedback.RotorToSensorRatio = 1;
+
+    intakeArm.getConfigurator().apply(intakeArmConfig);
 
   }
 
@@ -119,6 +122,11 @@ public class IntakeArm extends SubsystemBase {
 
   public IntakeArmState getIntakeArmState() {
     return intakeArmState;
+  }
+
+  public boolean isNearTarget(double setpoint) {
+
+    return MathUtil.isNear(setpoint, intakeArm.getPosition().getValueAsDouble(), 2);
   }
 
   @Override

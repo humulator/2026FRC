@@ -40,7 +40,7 @@ public class DefaultTurret extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    turret.setDegreesReference(turret.getTargetTurretSetpoint() + MathUtil.applyDeadband(shooterController.getRightX(), 0.1) * -1, 0);
+    turret.setDegreesReference(turret.getTargetTurretSetpoint() - MathUtil.applyDeadband(shooterController.getRightX(), 0.1) * -1, 0);
     shooter.setTargetManualRPS(shooter.getTargetManualRPS() - MathUtil.applyDeadband(shooterController.getLeftY(), 0.1) * 0.5);
 
   }

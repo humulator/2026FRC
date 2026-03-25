@@ -4,7 +4,9 @@
 
 package frc.robot.commands.generalCommands;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.swervedrive.Shooter;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.swervedrive.Turret;
@@ -15,11 +17,13 @@ public class TurretAutoWithoutShooter extends Command {
   Turret turret;
   SwerveSubsystem swerve;
   Shooter shooter;
+  CommandXboxController controller;
   /** Creates a new TurretAuto. */
-  public TurretAutoWithoutShooter(Turret t, SwerveSubsystem s, Shooter ss) {
+  public TurretAutoWithoutShooter(Turret t, SwerveSubsystem s, Shooter ss, CommandXboxController c) {
     turret = t;
     swerve = s;
     shooter = ss;
+    controller = c;
     addRequirements(turret);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -32,6 +36,7 @@ public class TurretAutoWithoutShooter extends Command {
   @Override
   public void execute() {
     turret.setDegreesReference(-turret.getAimmer().getAngleToRealHub().getDegrees(), 0);
+    shooter.setTargetManualRPS(shooter.getTargetManualRPS() - MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 0.5);
     //shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToRealHub()));
     
     //turret.setReference(turret.getAimmer().getAngleToVirtualHub().getRadians(), 0);

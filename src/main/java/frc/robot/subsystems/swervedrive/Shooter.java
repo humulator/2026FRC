@@ -42,7 +42,7 @@ public class Shooter extends SubsystemBase {
     shooterConfig.Slot0.kP = 0.1; //0.2
     shooterConfig.Slot0.kI = 0.00;
     shooterConfig.Slot0.kD = 0.00;
-    shooterConfig.Slot0.kV = 0.1;
+    shooterConfig.Slot0.kV = 0.12;
 
     shooterConfig.MotorOutput.Inverted = InvertedValue.Clockwise_Positive;
 
