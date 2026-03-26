@@ -48,9 +48,9 @@ public class Candle extends SubsystemBase {
     blinkingRed,
     blinkingGreen,
     yellow,
-    orange,
+    blue,
     blinkingYellow,
-    blinkingOrange
+    blinkingBlue
   }
   ledState state = ledState.red;
   ledState prevState = ledState.red;
@@ -113,9 +113,9 @@ public class Candle extends SubsystemBase {
       break;
       case FULL_MANUAL:
         if (shooterRPSCloseEnough) {
-          state = ledState.blinkingOrange;
+          state = ledState.blinkingBlue;
         } else {
-          state = ledState.orange;
+          state = ledState.blue;
         }
       break;
       case TURRETAUTO_SHOOTERMANUAL:
@@ -123,13 +123,13 @@ public class Candle extends SubsystemBase {
           state = ledState.blinkingYellow;
         }
         if (shooterRPSCloseEnough && !turretAndBotInBounds) {
-          state = ledState.blinkingOrange;
+          state = ledState.blinkingRed;
         }
         if (!shooterRPSCloseEnough && turretAndBotInBounds) {
           state = ledState.yellow;
         }
         if (!shooterRPSCloseEnough && !turretAndBotInBounds) {
-          state = ledState.orange;
+          state = ledState.red;
         }
       break;
     }
@@ -149,10 +149,10 @@ public class Candle extends SubsystemBase {
       if (state == ledState.red) {
         candle.setControl(redSolid);
       }
-      if (state == ledState.blinkingOrange) {
+      if (state == ledState.blinkingBlue) {
         candle.setControl(blueBlink.withSlot(0));
       }
-      if (state == ledState.orange) {
+      if (state == ledState.blue) {
         candle.setControl(blueSolid);
       }
       if (state == ledState.blinkingYellow) {
