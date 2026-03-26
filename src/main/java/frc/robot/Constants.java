@@ -42,6 +42,8 @@ public final class Constants
 public static final double maxTurretSetpoint = 75;
 public static final double minTurretSetpoint = -75;
 
+public static final double turretTooCloseMeters = 2;
+
 public static final double maxShooterRPS = 90;
 public static final double minShooterRPS = 20;
 
@@ -65,6 +67,7 @@ public static final int twentymsTicks = 100;
 public static final double turretSensorCalibrationValue = 0;
 public static final double turretCalibratedValue = 0;
 public static final double turretVoltageForCalibration = 1;
+
   
 
 //  public static final class AutonConstants

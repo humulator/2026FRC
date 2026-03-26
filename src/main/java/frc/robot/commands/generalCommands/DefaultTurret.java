@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.swervedrive.Shooter;
 import frc.robot.subsystems.swervedrive.Turret;
+import frc.robot.subsystems.swervedrive.Aimmer.turretControlState;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
 public class DefaultTurret extends Command {
@@ -33,7 +34,7 @@ public class DefaultTurret extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-
+    turret.getAimmer().setControlState(turretControlState.FULL_MANUAL);
   }
 
   //hehehehehehehehehe 67 67 67 sqrt6 sqrt7 = mason was here

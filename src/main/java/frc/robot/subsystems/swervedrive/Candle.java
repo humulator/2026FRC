@@ -19,6 +19,7 @@ import com.ctre.phoenix6.signals.RGBWColor;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.subsystems.swervedrive.Aimmer.turretControlState;
 
 public class Candle extends SubsystemBase {
 
@@ -28,6 +29,10 @@ public class Candle extends SubsystemBase {
   StrobeAnimation redBlink = new StrobeAnimation(0, 67);
   SolidColor greenSolid = new SolidColor(0, 67);
   StrobeAnimation greenBlink = new StrobeAnimation(0, 67);
+  SolidColor yellowSolid = new SolidColor(0, 67);
+  StrobeAnimation yellowBlink = new StrobeAnimation(0, 67);
+  SolidColor orangeSolid = new SolidColor(0, 67);
+  StrobeAnimation orangeBlink = new StrobeAnimation(0, 67);
   /** Creates a new Candle. */
 
   Aimmer aimmer;
@@ -41,7 +46,11 @@ public class Candle extends SubsystemBase {
     red,
     green,
     blinkingRed,
-    blinkingGreen
+    blinkingGreen,
+    yellow,
+    orange,
+    blinkingYellow,
+    blinkingOrange
   }
   ledState state = ledState.red;
   ledState prevState = ledState.red;
@@ -59,32 +68,68 @@ public class Candle extends SubsystemBase {
       redBlink.withColor(new RGBWColor(250, 0, 0, 0)).withFrameRate(7);
       greenSolid.withColor(new RGBWColor(0, 250, 0, 0));
       greenBlink.withColor(new RGBWColor(0, 250, 0, 0)).withFrameRate(7);
+      yellowSolid.withColor(new RGBWColor(250, 250, 0, 0));
+      yellowBlink.withColor(new RGBWColor(250, 250, 0, 0)).withFrameRate(7);
+      orangeSolid.withColor(new RGBWColor(250, 165, 0, 0));
+      orangeBlink.withColor(new RGBWColor(250, 165, 0, 0)).withFrameRate(7);
+
 
   }
 
   boolean shooterRPSCloseEnough = false;
   boolean turretInBounds = false;
+  boolean botTooClose = false;
+  boolean turretAndBotInBounds = false;
+  turretControlState controlState = turretControlState.FULL_MANUAL;
 
   @Override
   public void periodic() {
+
     shooterRPSCloseEnough = shooter.isCloseEnough();
     turretInBounds = aimmer.getInBounds();
+    botTooClose = aimmer.getTurretIsTooClose();
+    turretAndBotInBounds = (!botTooClose) && turretInBounds;
+    controlState = aimmer.getControlState();
+
     SmartDashboard.putBoolean("LEDSHOOTERRPSCLOSEENOUGH", shooterRPSCloseEnough);
     SmartDashboard.putBoolean("LEDTURRETINBOUNDS", turretInBounds);
     
 
-    if (shooterRPSCloseEnough && turretInBounds) {
-      state = ledState.blinkingGreen;
+    switch (controlState) {
+      case FULL_AUTO:
+        if (shooterRPSCloseEnough && turretAndBotInBounds) {
+          state = ledState.blinkingGreen;
+        }
+        if (shooterRPSCloseEnough && !turretAndBotInBounds) {
+          state = ledState.blinkingRed;
+        }
+        if (!shooterRPSCloseEnough && turretAndBotInBounds) {
+          state = ledState.green;
+        }
+        if (!shooterRPSCloseEnough && !turretAndBotInBounds) {
+          state = ledState.red;
+        }
+      case FULL_MANUAL:
+        if (shooterRPSCloseEnough) {
+          state = ledState.blinkingOrange;
+        } else {
+          state = ledState.orange;
+        }
+      case TURRETAUTO_SHOOTERMANUAL:
+        if (shooterRPSCloseEnough && turretAndBotInBounds) {
+          state = ledState.blinkingYellow;
+        }
+        if (shooterRPSCloseEnough && !turretAndBotInBounds) {
+          state = ledState.blinkingOrange;
+        }
+        if (!shooterRPSCloseEnough && turretAndBotInBounds) {
+          state = ledState.yellow;
+        }
+        if (!shooterRPSCloseEnough && !turretAndBotInBounds) {
+          state = ledState.orange;
+        }
     }
-    if (shooterRPSCloseEnough && !turretInBounds) {
-      state = ledState.blinkingRed;
-    }
-    if (!shooterRPSCloseEnough && turretInBounds) {
-      state = ledState.green;
-    }
-    if (!shooterRPSCloseEnough && !turretInBounds) {
-      state = ledState.red;
-    }
+    
 
     if (prevState != state) {
       candle.setControl(new EmptyAnimation(0));
@@ -99,6 +144,18 @@ public class Candle extends SubsystemBase {
       }
       if (state == ledState.red) {
         candle.setControl(redSolid);
+      }
+      if (state == ledState.blinkingOrange) {
+        candle.setControl(orangeBlink.withSlot(0));
+      }
+      if (state == ledState.orange) {
+        candle.setControl(orangeSolid);
+      }
+      if (state == ledState.blinkingYellow) {
+        candle.setControl(yellowBlink.withSlot(0));
+      }
+      if (state == ledState.yellow) {
+        candle.setControl(yellowSolid);
       }
       prevState = state;
     }

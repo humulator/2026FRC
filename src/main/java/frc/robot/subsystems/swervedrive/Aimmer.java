@@ -54,11 +54,20 @@ public class Aimmer extends SubsystemBase {
 
   boolean isInBounds = false;
 
+   public enum turretControlState{
+    FULL_MANUAL,
+    TURRETAUTO_SHOOTERMANUAL,
+    FULL_AUTO
+  }
+
+  turretControlState controlState = turretControlState.FULL_MANUAL;
+
   /** Creates a new pose estimator for the hub. */
   public Aimmer(SwerveSubsystem swerve) {
     this.swerve = swerve;
 
     //METERS as distanc2
+    speedFromDistance.put(5.5, 65.0);
     speedFromDistance.put(4.7, 60.0);
     speedFromDistance.put(4.0, 55.0);
     speedFromDistance.put(3.0, 50.0);
@@ -84,6 +93,14 @@ public class Aimmer extends SubsystemBase {
       System.out.println("Configuration failed! " + e);
     }
 
+  }
+
+  public void setControlState(turretControlState state) {
+    controlState = state;
+  }
+
+  public turretControlState getControlState() {
+    return controlState;
   }
 
   public void setTurretPoseFromBotPose(Pose2d botPose) {
@@ -194,6 +211,10 @@ public class Aimmer extends SubsystemBase {
 
   public boolean getInBounds() {
     return isInBounds;
+  }
+
+  public boolean getTurretIsTooClose() {
+    return getDistanceTurretToVirtualHub() < Constants.turretTooCloseMeters;
   }
 
   public double getmmSensor() {
