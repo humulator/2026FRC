@@ -79,8 +79,8 @@ public class Aimmer extends SubsystemBase {
 
     //seconds
     timeFromDistance.put(0.0, 0.0);
-    timeFromDistance.put(1.0, 0.2);
-    timeFromDistance.put(10.0, 1.0);
+    timeFromDistance.put(2.0, 0.5);
+    timeFromDistance.put(5.0, 1.0);
 
     robotSpeed = swerve.getFieldVelocity();
 
