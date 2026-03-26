@@ -7,6 +7,7 @@ package frc.robot;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
+import com.pathplanner.lib.events.EventTrigger;
 import com.pathplanner.lib.path.PointTowardsZone;
 import com.pathplanner.lib.pathfinding.Pathfinder;
 
@@ -263,9 +264,11 @@ public class RobotContainer
     NamedCommands.registerCommand("IntakeToDown", new IntakeToDown(intakeArm));
     NamedCommands.registerCommand("IntakeRunForward", new IntakeRunForward(intakeRollers));
     NamedCommands.registerCommand("IntakeToUp", new IntakeToUp(intakeArm));
+    //NamedCommands.registerCommand("IntakeToUp", Commands.none());
     NamedCommands.registerCommand("IntakeRunBackward", new IntakeRunBackward(intakeRollers));
     NamedCommands.registerCommand("IntakeRunZero", new IntakeRunZero(intakeRollers));
     NamedCommands.registerCommand("CalibrateTurret", new CalibrateTurret(aimmer, turret));
+
     
 
     boolean driverIntake = false;

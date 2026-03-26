@@ -5,11 +5,12 @@
   "pathFolders": [
     "2BlueCenter",
     "2BlueRightLeft",
+    "2RedCenter",
     "2RedRightLeft",
     "BlueCenter",
     "BlueLeftAutos",
     "BlueRightAutos",
-    "2RedCenter",
+    "2TESTREDLEFT",
     "RedCenterAutos",
     "RedLeftAutos",
     "RedRightAutos"
@@ -18,8 +19,9 @@
     "2CenterBlue",
     "2CenterRed",
     "2PreLoad",
+    "2noPreLoad",
     "HumberAutos",
-    "2noPreLoad"
+    "2TESTREDLEFT"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,

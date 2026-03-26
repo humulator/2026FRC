@@ -46,14 +46,14 @@ public class IntakeArm extends SubsystemBase {
     intakeArmConfig.Slot0.kI = 0;
     intakeArmConfig.Slot0.kD = 0;
 
-    intakeArmConfig.CurrentLimits.StatorCurrentLimit = 40;
-    intakeArmConfig.CurrentLimits.SupplyCurrentLimit = 40;
+    intakeArmConfig.CurrentLimits.StatorCurrentLimit = 20;
+    intakeArmConfig.CurrentLimits.SupplyCurrentLimit = 20;
 
     intakeArmConfig.CurrentLimits.StatorCurrentLimitEnable = true;
     intakeArmConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
 
-    intakeArmConfig.Voltage.PeakForwardVoltage = 2;
-    intakeArmConfig.Voltage.PeakReverseVoltage = -2;
+    intakeArmConfig.Voltage.PeakForwardVoltage = 3;
+    intakeArmConfig.Voltage.PeakReverseVoltage = -3;
 
     intakeArmConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 0.2;
 

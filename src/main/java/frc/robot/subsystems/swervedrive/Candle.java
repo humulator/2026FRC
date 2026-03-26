@@ -31,8 +31,8 @@ public class Candle extends SubsystemBase {
   StrobeAnimation greenBlink = new StrobeAnimation(0, 67);
   SolidColor yellowSolid = new SolidColor(0, 67);
   StrobeAnimation yellowBlink = new StrobeAnimation(0, 67);
-  SolidColor orangeSolid = new SolidColor(0, 67);
-  StrobeAnimation orangeBlink = new StrobeAnimation(0, 67);
+  SolidColor blueSolid = new SolidColor(0, 67);
+  StrobeAnimation blueBlink = new StrobeAnimation(0, 67);
   /** Creates a new Candle. */
 
   Aimmer aimmer;
@@ -68,10 +68,10 @@ public class Candle extends SubsystemBase {
       redBlink.withColor(new RGBWColor(250, 0, 0, 0)).withFrameRate(7);
       greenSolid.withColor(new RGBWColor(0, 250, 0, 0));
       greenBlink.withColor(new RGBWColor(0, 250, 0, 0)).withFrameRate(7);
-      yellowSolid.withColor(new RGBWColor(250, 250, 0, 0));
-      yellowBlink.withColor(new RGBWColor(250, 250, 0, 0)).withFrameRate(7);
-      orangeSolid.withColor(new RGBWColor(250, 165, 0, 0));
-      orangeBlink.withColor(new RGBWColor(250, 165, 0, 0)).withFrameRate(7);
+      yellowSolid.withColor(new RGBWColor(250, 200, 0, 0));
+      yellowBlink.withColor(new RGBWColor(250, 200, 0, 0)).withFrameRate(7);
+      blueSolid.withColor(new RGBWColor(0, 0, 255, 0));
+      blueBlink.withColor(new RGBWColor(0, 0, 255, 0)).withFrameRate(7);
 
 
   }
@@ -93,6 +93,7 @@ public class Candle extends SubsystemBase {
 
     SmartDashboard.putBoolean("LEDSHOOTERRPSCLOSEENOUGH", shooterRPSCloseEnough);
     SmartDashboard.putBoolean("LEDTURRETINBOUNDS", turretInBounds);
+    SmartDashboard.putString("LEDControlState", controlState.toString());
     
 
     switch (controlState) {
@@ -109,12 +110,14 @@ public class Candle extends SubsystemBase {
         if (!shooterRPSCloseEnough && !turretAndBotInBounds) {
           state = ledState.red;
         }
+      break;
       case FULL_MANUAL:
         if (shooterRPSCloseEnough) {
           state = ledState.blinkingOrange;
         } else {
           state = ledState.orange;
         }
+      break;
       case TURRETAUTO_SHOOTERMANUAL:
         if (shooterRPSCloseEnough && turretAndBotInBounds) {
           state = ledState.blinkingYellow;
@@ -128,6 +131,7 @@ public class Candle extends SubsystemBase {
         if (!shooterRPSCloseEnough && !turretAndBotInBounds) {
           state = ledState.orange;
         }
+      break;
     }
     
 
@@ -146,10 +150,10 @@ public class Candle extends SubsystemBase {
         candle.setControl(redSolid);
       }
       if (state == ledState.blinkingOrange) {
-        candle.setControl(orangeBlink.withSlot(0));
+        candle.setControl(blueBlink.withSlot(0));
       }
       if (state == ledState.orange) {
-        candle.setControl(orangeSolid);
+        candle.setControl(blueSolid);
       }
       if (state == ledState.blinkingYellow) {
         candle.setControl(yellowBlink.withSlot(0));
