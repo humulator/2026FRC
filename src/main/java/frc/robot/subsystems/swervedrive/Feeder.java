@@ -24,7 +24,7 @@ public class Feeder extends SubsystemBase {
   public Feeder() {
 TalonFXConfiguration feederConfig = new TalonFXConfiguration();
 
-    feederConfig.CurrentLimits.StatorCurrentLimit = 45;
+    feederConfig.CurrentLimits.StatorCurrentLimit = 40;
     feederConfig.CurrentLimits.SupplyCurrentLimit = 40;
     feederConfig.CurrentLimits.StatorCurrentLimitEnable = true;
     feederConfig.CurrentLimits.SupplyCurrentLimitEnable = true;

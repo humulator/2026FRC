@@ -24,7 +24,7 @@ public class Kickup extends SubsystemBase {
   public Kickup() {
     TalonFXConfiguration kickupConfig = new TalonFXConfiguration();
 
-    kickupConfig.CurrentLimits.StatorCurrentLimit = 45;
+    kickupConfig.CurrentLimits.StatorCurrentLimit = 40;
     kickupConfig.CurrentLimits.SupplyCurrentLimit = 40;
     kickupConfig.CurrentLimits.StatorCurrentLimitEnable = true;
     kickupConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
