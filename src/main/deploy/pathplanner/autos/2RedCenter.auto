@@ -19,32 +19,6 @@
                 "data": {
                   "commands": [
                     {
-                      "type": "sequential",
-                      "data": {
-                        "commands": [
-                          {
-                            "type": "parallel",
-                            "data": {
-                              "commands": [
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "IntakeToDown"
-                                  }
-                                },
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "IntakeRunForward"
-                                  }
-                                }
-                              ]
-                            }
-                          }
-                        ]
-                      }
-                    },
-                    {
                       "type": "path",
                       "data": {
                         "pathName": "2RedCenter"
@@ -80,25 +54,6 @@
                                   "type": "named",
                                   "data": {
                                     "name": "IntakeRunZero"
-                                  }
-                                }
-                              ]
-                            }
-                          },
-                          {
-                            "type": "parallel",
-                            "data": {
-                              "commands": [
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "IntakeToDown"
-                                  }
-                                },
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "IntakeRunForward"
                                   }
                                 }
                               ]

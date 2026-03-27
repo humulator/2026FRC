@@ -6,11 +6,12 @@
     "2BlueCenter",
     "2BlueRightLeft",
     "2RedCenter",
+    "2RedIntakeLeftRight",
     "2RedRightLeft",
     "BlueCenter",
     "BlueLeftAutos",
     "BlueRightAutos",
-    "2TESTREDLEFT",
+    "2BlueIntakeLeftRight",
     "RedCenterAutos",
     "RedLeftAutos",
     "RedRightAutos"
@@ -19,9 +20,10 @@
     "2CenterBlue",
     "2CenterRed",
     "2PreLoad",
+    "2RedIntake",
     "2noPreLoad",
     "HumberAutos",
-    "2TESTREDLEFT"
+    "2BlueIntake"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,
