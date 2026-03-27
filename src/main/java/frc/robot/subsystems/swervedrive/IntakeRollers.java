@@ -30,7 +30,7 @@ public class IntakeRollers extends SubsystemBase {
   public IntakeRollers() {
     TalonFXConfiguration intakeRollersConfig = new TalonFXConfiguration();
 
-    intakeRollersConfig.CurrentLimits.StatorCurrentLimit = 40;
+    intakeRollersConfig.CurrentLimits.StatorCurrentLimit = 45;
     intakeRollersConfig.CurrentLimits.SupplyCurrentLimit = 40;
     intakeRollersConfig.CurrentLimits.StatorCurrentLimitEnable = true;
     intakeRollersConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
