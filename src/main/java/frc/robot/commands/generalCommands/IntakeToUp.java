@@ -29,6 +29,6 @@ public class IntakeToUp extends InstantCommand {
     // } else {
     //   intakeArm.setReference(Constants.intakeUpSetpoint, 0, IntakeArmState.RETRACTED);
     // }
-    intakeArm.setReference(Constants.intakeUpSetpoint, 0);
+    intakeArm.setReference(Constants.intakeUpSetpoint, 0, IntakeArmState.RETRACTED);
   }
 }

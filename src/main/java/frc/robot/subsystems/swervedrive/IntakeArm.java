@@ -30,19 +30,18 @@ public class IntakeArm extends SubsystemBase {
   double curSetpoint = 0;
 
   public enum IntakeArmState {
-    NONE,
     EXTENDED,
     RETRACTED
   }
 
-  IntakeArmState intakeArmState = IntakeArmState.NONE;
+  IntakeArmState intakeArmState = IntakeArmState.RETRACTED;
  
 
   /** Creates a new IntakeArm. */
   public IntakeArm() {
     TalonFXConfiguration intakeArmConfig = new TalonFXConfiguration();
 
-    intakeArmConfig.Slot0.kP = 0.4;
+    intakeArmConfig.Slot0.kP = 0.45;
     intakeArmConfig.Slot0.kI = 0;
     intakeArmConfig.Slot0.kD = 0;
 
@@ -81,10 +80,22 @@ public class IntakeArm extends SubsystemBase {
   //   intakeArm.setPosition(absEncoder.get());
   // }
 
-  public void setReference(double setpoint, double ff) {
+  // public void setReference(double setpoint, double ff) {
+  //   intakeArm.setControl(PIDIntakeArm.withPosition(setpoint).withVelocity(ff));
+  //   curSetpoint = setpoint;
+  // }
+
+  public void setReference(double setpoint, double ff, IntakeArmState state) {
     intakeArm.setControl(PIDIntakeArm.withPosition(setpoint).withVelocity(ff));
     curSetpoint = setpoint;
+    intakeArmState = state;
   }
+
+  public IntakeArmState getIntakeState() {
+    return intakeArmState;
+  }
+
+
 
   //VoltageOut controlVoltage = new VoltageOut(0); 
   // public void usewpilibPID() {
@@ -134,6 +145,7 @@ public class IntakeArm extends SubsystemBase {
     //usewpilibPID();
     SmartDashboard.putNumber("ArmintakeArmRelative", intakeArm.getPosition().getValueAsDouble());
     SmartDashboard.putNumber("ArmVoltage", intakeArm.getMotorVoltage().getValueAsDouble());
+    SmartDashboard.putString("IntakeArmStateMaybe", getIntakeArmState().toString());
     //SmartDashboard.putNumber("ArmIntakeArmAbsoluteValue", absEncoder.get());
     //SmartDashboard.putNumber("ArmintakeAngleToHorizontal", getDegreesAngleToHorizontal());
     //SmartDashboard.putString("IntakeArmState", intakeArmState.toString());

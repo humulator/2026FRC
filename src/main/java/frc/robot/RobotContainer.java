@@ -38,6 +38,7 @@ import frc.robot.commands.generalCommands.FeederWhileHeld;
 import frc.robot.commands.generalCommands.IntakeRunBackward;
 import frc.robot.commands.generalCommands.KickupWhileHeld;
 import frc.robot.commands.generalCommands.PrepareShooterThenFeed;
+import frc.robot.commands.generalCommands.ToggleIntakeUpDown;
 import frc.robot.commands.generalCommands.TurretAuto;
 import frc.robot.commands.generalCommands.TurretAutoPass;
 import frc.robot.commands.generalCommands.TurretAutoPassWithoutShooter;
@@ -284,8 +285,10 @@ public class RobotContainer
     Trigger intakeReverse = shooterController.back();
 
     //Intake stuff
-    L1WithoutL2.onTrue(new ParallelCommandGroup(new IntakeToDown(intakeArm)));
-    L1WithoutL2.onFalse(new ParallelCommandGroup(new IntakeToUp(intakeArm)));
+    // L1WithoutL2.onTrue(new ParallelCommandGroup(new IntakeToDown(intakeArm)));
+    // L1WithoutL2.onFalse(new ParallelCommandGroup(new IntakeToUp(intakeArm)));
+
+    L1WithoutL2.onTrue(new ToggleIntakeUpDown(intakeArm));
 
     L2WithoutL1.onTrue(new ParallelCommandGroup(new IntakeRunForward(intakeRollers)));
     L2WithoutL1.onFalse(new ParallelCommandGroup(new IntakeRunZero(intakeRollers)));

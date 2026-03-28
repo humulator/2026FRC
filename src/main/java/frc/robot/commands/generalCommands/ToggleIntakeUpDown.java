@@ -12,10 +12,11 @@ import frc.robot.subsystems.swervedrive.IntakeArm.IntakeArmState;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/stable/docs/software/commandbased/convenience-features.html
-public class IntakeToDown extends InstantCommand {
+public class ToggleIntakeUpDown extends InstantCommand {
+
 
   IntakeArm intakeArm;
-  public IntakeToDown(IntakeArm i) {
+  public ToggleIntakeUpDown(IntakeArm i) {
     intakeArm = i;
     addRequirements(intakeArm);
     // Use addRequirements() here to declare subsystem dependencies.
@@ -24,7 +25,10 @@ public class IntakeToDown extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    //intakeArm.setReference(Constants.intakeUpSetpoint, 0, IntakeArmState.EXTENDED);
-    intakeArm.setReference(Constants.intakeDownSetpoint, 0, IntakeArmState.EXTENDED);
+    if (intakeArm.getIntakeState() == IntakeArmState.EXTENDED) {
+      intakeArm.setReference(Constants.intakeUpSetpoint, 0, IntakeArmState.RETRACTED);
+    } else {
+      intakeArm.setReference(Constants.intakeDownSetpoint, 0, IntakeArmState.EXTENDED);
+    }
   }
 }
