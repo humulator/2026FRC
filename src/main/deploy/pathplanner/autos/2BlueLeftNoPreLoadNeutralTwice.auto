@@ -19,6 +19,31 @@
                 "data": {
                   "commands": [
                     {
+                      "type": "parallel",
+                      "data": {
+                        "commands": [
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "IntakeToDown"
+                            }
+                          },
+                          {
+                            "type": "named",
+                            "data": {
+                              "name": "IntakeRunForward"
+                            }
+                          }
+                        ]
+                      }
+                    },
+                    {
+                      "type": "path",
+                      "data": {
+                        "pathName": "Intake2BlueLeftNeutral"
+                      }
+                    },
+                    {
                       "type": "sequential",
                       "data": {
                         "commands": [
@@ -29,13 +54,13 @@
                                 {
                                   "type": "named",
                                   "data": {
-                                    "name": "IntakeToDown"
+                                    "name": "IntakeToUp"
                                   }
                                 },
                                 {
                                   "type": "named",
                                   "data": {
-                                    "name": "IntakeRunForward"
+                                    "name": "IntakeRunZero"
                                   }
                                 }
                               ]
@@ -47,7 +72,7 @@
                     {
                       "type": "path",
                       "data": {
-                        "pathName": "2BlueLeftNeutral"
+                        "pathName": "IntakeBack2BlueLeftNeutral"
                       }
                     },
                     {
@@ -108,60 +133,99 @@
                       }
                     },
                     {
-                      "type": "path",
-                      "data": {
-                        "pathName": "2BlueLeftNeutral"
-                      }
-                    },
-                    {
                       "type": "sequential",
                       "data": {
                         "commands": [
                           {
-                            "type": "deadline",
+                            "type": "path",
+                            "data": {
+                              "pathName": "Intake2BlueLeftNeutral"
+                            }
+                          },
+                          {
+                            "type": "sequential",
                             "data": {
                               "commands": [
                                 {
-                                  "type": "wait",
+                                  "type": "parallel",
                                   "data": {
-                                    "waitTime": 10.0
-                                  }
-                                },
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "WhileHeldShootAndFeed"
-                                  }
-                                },
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "IntakeToUp"
-                                  }
-                                },
-                                {
-                                  "type": "named",
-                                  "data": {
-                                    "name": "IntakeRunZero"
+                                    "commands": [
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "IntakeToUp"
+                                        }
+                                      },
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "IntakeRunZero"
+                                        }
+                                      }
+                                    ]
                                   }
                                 }
                               ]
                             }
                           },
                           {
-                            "type": "parallel",
+                            "type": "path",
+                            "data": {
+                              "pathName": "IntakeBack2BlueLeftNeutral"
+                            }
+                          },
+                          {
+                            "type": "sequential",
                             "data": {
                               "commands": [
                                 {
-                                  "type": "named",
+                                  "type": "deadline",
                                   "data": {
-                                    "name": "IntakeToDown"
+                                    "commands": [
+                                      {
+                                        "type": "wait",
+                                        "data": {
+                                          "waitTime": 6.0
+                                        }
+                                      },
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "WhileHeldShootAndFeed"
+                                        }
+                                      },
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "IntakeToUp"
+                                        }
+                                      },
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "IntakeRunZero"
+                                        }
+                                      }
+                                    ]
                                   }
                                 },
                                 {
-                                  "type": "named",
+                                  "type": "parallel",
                                   "data": {
-                                    "name": "IntakeRunForward"
+                                    "commands": [
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "IntakeToDown"
+                                        }
+                                      },
+                                      {
+                                        "type": "named",
+                                        "data": {
+                                          "name": "IntakeRunForward"
+                                        }
+                                      }
+                                    ]
                                   }
                                 }
                               ]
@@ -180,6 +244,6 @@
     }
   },
   "resetOdom": true,
-  "folder": "2noPreLoad",
+  "folder": "2Blue",
   "choreoAuto": false
 }

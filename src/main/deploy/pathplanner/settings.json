@@ -17,13 +17,13 @@
     "RedRightAutos"
   ],
   "autoFolders": [
+    "2Blue",
     "2CenterBlue",
     "2CenterRed",
     "2PreLoad",
-    "2RedIntake",
+    "2Red",
     "2noPreLoad",
-    "HumberAutos",
-    "2BlueIntake"
+    "HumberAutos"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,
