@@ -72,8 +72,8 @@ public class Turret extends SubsystemBase {
     turretConfig.ClosedLoopRamps.DutyCycleClosedLoopRampPeriod = 1;
     turretConfig.ClosedLoopGeneral.ContinuousWrap = false;
 
-    turretConfig.Voltage.PeakForwardVoltage = 2;
-    turretConfig.Voltage.PeakReverseVoltage = -2;
+    turretConfig.Voltage.PeakForwardVoltage = 3;
+    turretConfig.Voltage.PeakReverseVoltage = -3;
 
     turretConfig.MotorOutput.PeakForwardDutyCycle = 0.01;
     turretConfig.MotorOutput.PeakReverseDutyCycle = -0.01;

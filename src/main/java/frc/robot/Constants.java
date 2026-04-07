@@ -39,7 +39,7 @@ public final class Constants
   public static final int kickupID = 35;
 
   //turret setpoints DEGREES
-public static final double maxTurretSetpoint = 75;
+public static final double maxTurretSetpoint = 105;
 public static final double minTurretSetpoint = -75;
 
 public static final double turretTooCloseMeters = 2.5;
@@ -57,6 +57,9 @@ public static final double kickupStandardSpeed = 55;
 
 public static final double intakeUpSetpoint = -0.2; //with manual pid 108
 public static final double intakeDownSetpoint = 16; //with manual pid -34
+public static final double intakeBobSetpoint = 8;
+
+public static final double intakeTickerNumber = 10;
 
 // speeds
 public static final double IntakeForwardSpeed = -12;

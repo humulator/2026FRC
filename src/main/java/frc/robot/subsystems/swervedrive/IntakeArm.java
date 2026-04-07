@@ -31,7 +31,8 @@ public class IntakeArm extends SubsystemBase {
 
   public enum IntakeArmState {
     EXTENDED,
-    RETRACTED
+    RETRACTED,
+    BOB
   }
 
   IntakeArmState intakeArmState = IntakeArmState.RETRACTED;

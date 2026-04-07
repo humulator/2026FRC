@@ -343,7 +343,7 @@ public class Vision
                                Units.inchesToMeters(-11), //LEFT
                                Units.inchesToMeters(7.375)), //UP
              VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
-    /**
+    /** VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
      * Right Camera
      */
     RIGHT_CAM("5031_Arducam",

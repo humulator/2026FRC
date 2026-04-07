@@ -32,6 +32,7 @@ import edu.wpi.first.wpilibj2.command.SequentialCommandGroup;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
+import frc.robot.commands.generalCommands.BobIntake;
 import frc.robot.commands.generalCommands.CalibrateTurret;
 import frc.robot.commands.generalCommands.DefaultTurret;
 import frc.robot.commands.generalCommands.FeederWhileHeld;
@@ -280,8 +281,9 @@ public class RobotContainer
     // Trigger L1WithoutL2 = driverXbox.controller.leftBumper();//.and(shooterController.leftTrigger().negate());
     // Trigger L2WithoutL1 = driverXbox.controller.leftTrigger();
     // Trigger intakeReverse = driverXbox.controller.back();
-    Trigger L1WithoutL2 = shooterController.leftBumper();//.and(shooterController.leftTrigger().negate());
-    Trigger L2WithoutL1 = shooterController.leftTrigger();
+    Trigger L1WithoutL2 = shooterController.leftBumper().and(shooterController.leftTrigger().negate());
+    Trigger L2WithoutL1 = shooterController.leftTrigger().and(shooterController.leftBumper().negate());
+    Trigger L2AndL1 = shooterController.leftBumper().and(shooterController.leftTrigger());
     Trigger intakeReverse = shooterController.back();
 
     //Intake stuff
@@ -293,6 +295,8 @@ public class RobotContainer
     L2WithoutL1.onTrue(new ParallelCommandGroup(new IntakeRunForward(intakeRollers)));
     L2WithoutL1.onFalse(new ParallelCommandGroup(new IntakeRunZero(intakeRollers)));
 
+    L2AndL1.whileTrue(new BobIntake(intakeArm, intakeRollers));
+
     intakeReverse.onTrue(new IntakeRunBackward(intakeRollers));
     intakeReverse.onFalse(new IntakeRunZero(intakeRollers));    
 
@@ -302,6 +306,10 @@ public class RobotContainer
     shooterController.x().whileTrue(new TurretAutoPass(turret, drivebase, shooter));
     shooterController.a().whileTrue(new TurretAutoWithoutShooter(turret, drivebase, shooter, shooterController));
     shooterController.b().whileTrue(new TurretAutoPassWithoutShooter(turret, drivebase, shooter, shooterController));
+
+    // For the SOTM
+    shooterController.rightTrigger().onTrue(new InstantCommand(() -> driverXbox.setFactor(0.4)));
+    shooterController.rightTrigger().onFalse(new InstantCommand(() -> driverXbox.setFactor(1)));
 
     // required shooting and feeding
     R1WithoutR2.whileTrue(new WhileHeldShooterOnly(shooter, turret, shooterController));

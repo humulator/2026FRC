@@ -12,6 +12,8 @@ public class EdittedController extends SubsystemBase {
   public CommandXboxController controller;
   public double offset = 0;
 
+  public double factor = 1;
+
   /** Creates a new EdittedController. */
   public EdittedController(int id){
     controller = new CommandXboxController(id);
@@ -25,7 +27,7 @@ public class EdittedController extends SubsystemBase {
     theta = Math.atan2(controller.getLeftY(), controller.getLeftX());
     theta += offset;
 
-    return Math.cos(theta) * mag;
+    return Math.cos(theta) * mag * factor;
   }
 
   public double getY() {
@@ -36,11 +38,15 @@ public class EdittedController extends SubsystemBase {
     theta = Math.atan2(controller.getLeftY(), controller.getLeftX());
     theta += offset;
 
-    return Math.sin(theta) * mag;
+    return Math.sin(theta) * mag * factor;
   }
 
   public void setOffset(double deg) {
     offset = Units.degreesToRadians(-deg);
+  }
+
+  public void setFactor(double fac) {
+    factor = fac;
   }
 
   public double getInvertedRightY() {
