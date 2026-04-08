@@ -62,6 +62,8 @@ import frc.robot.subsystems.swervedrive.Shooter;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem.swervePosition;
 import frc.robot.subsystems.swervedrive.Turret;
+import frc.robot.subsystems.swervedrive.EdittedController.driveSpeedState;
+import frc.robot.subsystems.swervedrive.Feeder.feederState;
 import frc.robot.subsystems.swervedrive.IntakeArm.IntakeArmState;
 
 import static edu.wpi.first.units.Units.Degrees;
@@ -93,7 +95,7 @@ public class RobotContainer
   IntakeRollers intakeRollers = new IntakeRollers();
   Kickup kickup = new Kickup();
   Feeder feeder = new Feeder();
-  Candle candle = new Candle(aimmer, turret, shooter, intakeArm, intakeRollers, kickup);
+  Candle candle = new Candle(aimmer, turret, shooter, intakeArm, intakeRollers, kickup, feeder);
 
   
 
@@ -302,14 +304,16 @@ public class RobotContainer
 
     // Turret and non-required shooting yUP xLEFT aDOWN bRIGHT
     turret.setDefaultCommand(new DefaultTurret(shooter, turret, shooterController));
-    shooterController.y().whileTrue(new TurretAuto(turret, drivebase, shooter));
-    shooterController.x().whileTrue(new TurretAutoPass(turret, drivebase, shooter));
-    shooterController.a().whileTrue(new TurretAutoWithoutShooter(turret, drivebase, shooter, shooterController));
-    shooterController.b().whileTrue(new TurretAutoPassWithoutShooter(turret, drivebase, shooter, shooterController));
+    shooterController.y().toggleOnTrue(new TurretAuto(turret, drivebase, shooter));
+    shooterController.x().toggleOnTrue(new TurretAutoPass(turret, drivebase, shooter));
+    shooterController.a().toggleOnTrue(new TurretAutoWithoutShooter(turret, drivebase, shooter, shooterController));
+    shooterController.b().toggleOnTrue(new TurretAutoPassWithoutShooter(turret, drivebase, shooter, shooterController));
 
     // For the SOTM
-    shooterController.rightTrigger().onTrue(new InstantCommand(() -> driverXbox.setFactor(0.4)));
-    shooterController.rightTrigger().onFalse(new InstantCommand(() -> driverXbox.setFactor(1)));
+    Trigger feederOn = new Trigger(() -> (feeder.getFeederState() == feederState.ON));
+
+    feederOn.onTrue(new InstantCommand(() -> driverXbox.setFactor(0.4, driveSpeedState.slow)));
+    feederOn.onFalse(new InstantCommand(() -> driverXbox.setFactor(1, driveSpeedState.normal)));
 
     // required shooting and feeding
     R1WithoutR2.whileTrue(new WhileHeldShooterOnly(shooter, turret, shooterController));
@@ -321,8 +325,15 @@ public class RobotContainer
     //gyro reset
     driverXbox.controller.x().onTrue(new InstantCommand(() -> driverXbox.setOffset(drivebase.getPose().getRotation().getDegrees() + 180)));
     driverXbox.controller.b().onTrue(new InstantCommand(() -> driverXbox.setOffset(0)));
-    Trigger intakeArmNear = new Trigger(() -> intakeArm.isNearTarget(Constants.intakeDownSetpoint));
-    intakeArmNear.onTrue(Commands.runEnd(
+
+    Trigger intakeArmNearDown = new Trigger(() -> intakeArm.isNearTarget(Constants.intakeDownSetpoint));
+    intakeArmNearDown.onTrue(Commands.runEnd(
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0)
+    ).withTimeout(0.5));
+
+    Trigger intakeArmNearUp = new Trigger(() -> intakeArm.isNearTarget(Constants.intakeUpSetpoint));
+    intakeArmNearUp.onTrue(Commands.runEnd(
         () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
         () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0)
     ).withTimeout(0.5));
@@ -332,6 +343,12 @@ public class RobotContainer
         () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 1.0),
         () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 0)
     ).withTimeout(0.5));
+
+    Trigger slowDriveTrain = new Trigger(() -> (driverXbox.getSpeedState() == driveSpeedState.slow));
+    slowDriveTrain.whileTrue(Commands.runEnd(
+        () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 0.2),
+        () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 0)
+    ));
 
 
 

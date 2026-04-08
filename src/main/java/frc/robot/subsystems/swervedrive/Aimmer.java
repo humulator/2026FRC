@@ -18,6 +18,7 @@ import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.interpolation.InterpolatingDoubleTreeMap;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -226,6 +227,68 @@ public class Aimmer extends SubsystemBase {
     return 1000000000;
   }
 
+  public boolean getRedAutoWon() {
+    String data = DriverStation.getGameSpecificMessage();
+
+    if (data != null) {
+      if (!data.equals("")) {
+        if (data.equals("R")) {
+          return true;
+        } else {
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  public boolean WonAuto() {
+    boolean redWin = getRedAutoWon();
+    boolean redAlliance = getIsRedAlliance();
+
+    if (redWin == redAlliance) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public boolean getHubIsActive() {
+    boolean autoWin = WonAuto();
+    double timeUntil0 = Timer.getMatchTime();
+    if (timeUntil0 < 30) {
+      return true;
+    }
+    if (autoWin) {
+      if (timeUntil0 < 55) {
+        return true;
+      } else if (timeUntil0 < 80) {
+        return false;
+      } else if (timeUntil0 < 105) {
+        return true;
+      } else if (timeUntil0 < 130) {
+        return false;
+      } else {
+        return true;
+      }
+    } else {
+      if (timeUntil0 < 55) {
+        return false;
+      } else if (timeUntil0 < 80) {
+        return true;
+      } else if (timeUntil0 < 105) {
+        return false;
+      } else if (timeUntil0 < 130) {
+        return true;
+      } else {
+        return true;
+      }
+    }
+
+  }
+
+
   @Override
   public void periodic() {
     setTurretPoseFromBotPose(swerve.getPose());
@@ -237,6 +300,8 @@ public class Aimmer extends SubsystemBase {
     swerve.getField().getObject("hubButItsActuallyWHereTheBotWantsToShoot").setPose(getPoseOfHubWithFieldSpeeds());
     swerve.getField().getObject("linething").setPose(getPoseOfPointOnLineClosestToBot());
     SmartDashboard.putNumber("DistanceSensorOutput", getmmSensor());
+    //SmartDashboard.putNumber("fmstimer", Timer.getMatchTime());
+    SmartDashboard.putBoolean("HUBSTATE", getHubIsActive());
 
     // This method will be called once per scheduler run
   }

@@ -20,6 +20,14 @@ public class Feeder extends SubsystemBase {
   VelocityVoltage velocityPIDFeeder = new VelocityVoltage(0);
   VoltageOut voltageFeeder = new VoltageOut(0);
 
+  public enum feederState{
+    OFF,
+    ON,
+    REVERSE
+  }
+
+  feederState fState = feederState.OFF;
+
   /** Creates a new Feeder. */
   public Feeder() {
 TalonFXConfiguration feederConfig = new TalonFXConfiguration();
@@ -46,8 +54,17 @@ TalonFXConfiguration feederConfig = new TalonFXConfiguration();
     feeder.setControl(velocityPIDFeeder.withVelocity(rotationsPerSecond));
   }
 
-  public void setVoltageOpenLoop(double volts) {
+  // public void setVoltageOpenLoop(double volts) {
+  //   feeder.setControl(voltageFeeder.withOutput(volts));
+  // }
+
+  public void setVoltageOpenLoop(double volts, feederState s) {
     feeder.setControl(voltageFeeder.withOutput(volts));
+    fState = s;
+  }
+
+  public feederState getFeederState() {
+    return fState;
   }
 
   @Override

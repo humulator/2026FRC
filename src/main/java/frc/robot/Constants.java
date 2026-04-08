@@ -59,7 +59,7 @@ public static final double intakeUpSetpoint = -0.2; //with manual pid 108
 public static final double intakeDownSetpoint = 16; //with manual pid -34
 public static final double intakeBobSetpoint = 8;
 
-public static final double intakeTickerNumber = 10;
+public static final double intakeTickerNumber = 20;
 
 // speeds
 public static final double IntakeForwardSpeed = -12;

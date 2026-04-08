@@ -14,6 +14,13 @@ public class EdittedController extends SubsystemBase {
 
   public double factor = 1;
 
+  public enum driveSpeedState{
+    normal,
+    slow
+  }
+
+  driveSpeedState drivespeed = driveSpeedState.normal;
+
   /** Creates a new EdittedController. */
   public EdittedController(int id){
     controller = new CommandXboxController(id);
@@ -45,8 +52,13 @@ public class EdittedController extends SubsystemBase {
     offset = Units.degreesToRadians(-deg);
   }
 
-  public void setFactor(double fac) {
+  public void setFactor(double fac, driveSpeedState s) {
     factor = fac;
+    drivespeed = s;
+  }
+
+  public driveSpeedState getSpeedState() {
+    return drivespeed;
   }
 
   public double getInvertedRightY() {

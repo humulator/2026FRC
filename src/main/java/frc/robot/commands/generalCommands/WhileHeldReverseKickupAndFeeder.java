@@ -6,6 +6,7 @@ package frc.robot.commands.generalCommands;
 
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.subsystems.swervedrive.Feeder;
+import frc.robot.subsystems.swervedrive.Feeder.feederState;
 import frc.robot.subsystems.swervedrive.Kickup;
 
 /* You should consider using the more terse Command factories API instead https://docs.wpilib.org/en/stable/docs/software/commandbased/organizing-command-based.html#defining-commands */
@@ -26,7 +27,7 @@ public class WhileHeldReverseKickupAndFeeder extends Command {
   @Override
   public void initialize() {
     kickup.setVoltageOpenLoop(-6);
-    feeder.setVoltageOpenLoop(-6);
+    feeder.setVoltageOpenLoop(-6, feederState.REVERSE);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
@@ -37,7 +38,7 @@ public class WhileHeldReverseKickupAndFeeder extends Command {
   @Override
   public void end(boolean interrupted) {
     kickup.setVoltageOpenLoop(0);
-    feeder.setVoltageOpenLoop(0);
+    feeder.setVoltageOpenLoop(0, feederState.OFF);
   }
 
   // Returns true when the command should end.
