@@ -254,9 +254,9 @@ public class Aimmer extends SubsystemBase {
     }
   }
 
-  public boolean getHubIsActive() {
+  public boolean getHubIsActive(double offset) {
     boolean autoWin = WonAuto();
-    double timeUntil0 = Timer.getMatchTime();
+    double timeUntil0 = Timer.getMatchTime() - offset;
     if (timeUntil0 < 30) {
       return true;
     }
@@ -288,6 +288,60 @@ public class Aimmer extends SubsystemBase {
 
   }
 
+  public double getTimeUntilNextChange(double offset) {
+    boolean autoWin = WonAuto();
+    double timeUntil0 = Timer.getMatchTime() - offset;
+    if (timeUntil0 < 30) {
+      return -1;
+    }
+    if (autoWin) {
+      if (timeUntil0 < 55) {
+        return -1;
+      } else if (timeUntil0 < 80) {
+        return timeUntil0 - 55;
+      } else if (timeUntil0 < 105) {
+        return timeUntil0 - 80;
+      } else if (timeUntil0 < 130) {
+        return timeUntil0 - 105;
+      } else {
+        return timeUntil0 - 130;
+      }
+    } else {
+      if (timeUntil0 < 55) {
+        return timeUntil0 - 30;
+      } else if (timeUntil0 < 80) {
+        return timeUntil0 - 55;
+      } else if (timeUntil0 < 105) {
+        return timeUntil0 - 80;
+      } else if (timeUntil0 < 130) {
+        return timeUntil0 - 105;
+      } else {
+        return timeUntil0 - 105;
+      }
+    }
+
+  }
+
+  public boolean getChangeToActive() {
+    if (getHubIsActive(0)){
+      return false;
+    } else if (getHubIsActive(Constants.LEDWarningSeconds)){
+      return true;
+    } else{
+      return false;
+    }
+  }
+
+  public boolean getChangeToInactive() {
+    if (!getHubIsActive(0)){
+      return false;
+    } else if (!getHubIsActive(Constants.LEDWarningSeconds)){
+      return true;
+    } else{
+      return false;
+    }
+  }
+
 
   @Override
   public void periodic() {
@@ -301,7 +355,8 @@ public class Aimmer extends SubsystemBase {
     swerve.getField().getObject("linething").setPose(getPoseOfPointOnLineClosestToBot());
     SmartDashboard.putNumber("DistanceSensorOutput", getmmSensor());
     //SmartDashboard.putNumber("fmstimer", Timer.getMatchTime());
-    SmartDashboard.putBoolean("HUBSTATE", getHubIsActive());
+    SmartDashboard.putBoolean("HUBSTATE", getHubIsActive(0));
+    SmartDashboard.putNumber("TimeUntilNextShift", getTimeUntilNextChange(0));
 
     // This method will be called once per scheduler run
   }

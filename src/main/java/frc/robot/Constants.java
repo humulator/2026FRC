@@ -70,6 +70,7 @@ public static final int twentymsTicks = 100;
 public static final double turretSensorCalibrationValue = 0;
 public static final double turretCalibratedValue = 0;
 public static final double turretVoltageForCalibration = 1;
+public static final double LEDWarningSeconds = 3;
 
   
 

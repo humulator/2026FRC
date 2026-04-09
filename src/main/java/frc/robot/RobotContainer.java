@@ -72,6 +72,7 @@ import java.io.File;
 import java.util.Set;
 
 import swervelib.SwerveInputStream;
+import swervelib.parser.json.modules.DriveConversionFactorsJson;
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a "declarative" paradigm, very
@@ -273,20 +274,14 @@ public class RobotContainer
     NamedCommands.registerCommand("IntakeRunZero", new IntakeRunZero(intakeRollers));
     NamedCommands.registerCommand("CalibrateTurret", new CalibrateTurret(aimmer, turret));
 
-    
-
-    boolean driverIntake = false;
 
     Trigger R1WithoutR2 = shooterController.rightBumper().and(shooterController.rightTrigger().negate());
     Trigger R2WithoutR1 = shooterController.rightTrigger();
 
-    // Trigger L1WithoutL2 = driverXbox.controller.leftBumper();//.and(shooterController.leftTrigger().negate());
-    // Trigger L2WithoutL1 = driverXbox.controller.leftTrigger();
-    // Trigger intakeReverse = driverXbox.controller.back();
-    Trigger L1WithoutL2 = shooterController.leftBumper().and(shooterController.leftTrigger().negate());
-    Trigger L2WithoutL1 = shooterController.leftTrigger().and(shooterController.leftBumper().negate());
-    Trigger L2AndL1 = shooterController.leftBumper().and(shooterController.leftTrigger());
-    Trigger intakeReverse = shooterController.back();
+    Trigger L1WithoutL2 = driverXbox.controller.leftTrigger().and(driverXbox.controller.rightTrigger().negate());
+    Trigger L2WithoutL1 = driverXbox.controller.rightTrigger().and(driverXbox.controller.leftTrigger().negate());
+    Trigger L2AndL1 = driverXbox.controller.leftTrigger().and(driverXbox.controller.rightTrigger());
+    Trigger intakeReverse = driverXbox.controller.back();
 
     //Intake stuff
     // L1WithoutL2.onTrue(new ParallelCommandGroup(new IntakeToDown(intakeArm)));
@@ -354,13 +349,13 @@ public class RobotContainer
 
     //Auto Align 
 
-    driverXbox.controller.leftTrigger().whileTrue(new ConditionalCommand(
+    driverXbox.controller.povLeft().whileTrue(new ConditionalCommand(
         drivebase.driveToPose(new Pose2d(13.537, 0.724, new Rotation2d(Degrees.of(90)))), 
         drivebase.driveToPose(new Pose2d(3.593, 7.423, new Rotation2d(Degrees.of(-90)))), 
         () -> aimmer.getIsRedAlliance()
     ));
 
-    driverXbox.controller.rightTrigger().whileTrue(new ConditionalCommand(
+    driverXbox.controller.povRight().whileTrue(new ConditionalCommand(
         drivebase.driveToPose(new Pose2d(13.242, 7.281, new Rotation2d(Degrees.of(-112)))), 
         drivebase.driveToPose(new Pose2d(3.429, 0.636, new Rotation2d(Degrees.of(90)))), 
         () -> aimmer.getIsRedAlliance()
