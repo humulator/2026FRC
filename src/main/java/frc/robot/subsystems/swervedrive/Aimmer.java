@@ -356,7 +356,7 @@ public class Aimmer extends SubsystemBase {
     SmartDashboard.putNumber("DistanceSensorOutput", getmmSensor());
     //SmartDashboard.putNumber("fmstimer", Timer.getMatchTime());
     SmartDashboard.putBoolean("HUBSTATE", getHubIsActive(0));
-    SmartDashboard.putNumber("TimeUntilNextShift", getTimeUntilNextChange(0));
+    SmartDashboard.putNumber("TimeUntilNextShift", Math.round(getTimeUntilNextChange(0) * 10.0) / 10.0);
 
     // This method will be called once per scheduler run
   }
