@@ -341,8 +341,8 @@ public class RobotContainer
 
     Trigger slowDriveTrain = new Trigger(() -> (driverXbox.getSpeedState() == driveSpeedState.slow));
     slowDriveTrain.whileTrue(Commands.runEnd(
-        () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 0.2),
-        () -> shooterController.getHID().setRumble(RumbleType.kBothRumble, 0)
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0)
     ));
 
 
