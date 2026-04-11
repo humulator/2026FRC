@@ -109,13 +109,13 @@ public class Candle extends SubsystemBase {
       blueBlink.withColor(new RGBWColor(0, 0, 255, 0)).withFrameRate(4);
       blueFastBlink.withColor(new RGBWColor(0, 0, 255, 0)).withFrameRate(7);
 
-      whiteSolid.withColor(new RGBWColor(100, 100, 100, 100));
-      whiteBlink.withColor(new RGBWColor(100, 100, 100, 100)).withFrameRate(4);
-      whiteFastBlink.withColor(new RGBWColor(100, 100, 100, 100)).withFrameRate(7);
+      whiteSolid.withColor(new RGBWColor(200, 200, 200, 200));
+      whiteBlink.withColor(new RGBWColor(200, 200, 200, 200)).withFrameRate(4);
+      whiteFastBlink.withColor(new RGBWColor(200, 200, 200, 200)).withFrameRate(7);
 
-      cyanSolid.withColor(new RGBWColor(0, 200, 200, 0));
-      cyanBlink.withColor(new RGBWColor(0, 200, 200, 0)).withFrameRate(4);
-      cyanFastBlink.withColor(new RGBWColor(0, 200, 200, 0)).withFrameRate(7);
+      cyanSolid.withColor(new RGBWColor(0, 250, 250, 0));
+      cyanBlink.withColor(new RGBWColor(0, 250, 250, 0)).withFrameRate(4);
+      cyanFastBlink.withColor(new RGBWColor(0, 250, 250, 0)).withFrameRate(7);
 
   }
 
