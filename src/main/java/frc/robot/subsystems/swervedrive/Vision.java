@@ -153,6 +153,20 @@ public class Vision
 
   }
 
+  public void resetSwervePoseToVision(SwerveDrive swerveDrive)
+  {
+    if (SwerveDriveTelemetry.isSimulation && swerveDrive.getSimulationDriveTrainPose().isPresent())
+    {
+    }
+      Optional<EstimatedRobotPose> poseEst = getEstimatedGlobalPose(Cameras.RIGHT_CAM);
+      if (poseEst.isPresent())
+      {
+        var pose = poseEst.get();
+        swerveDrive.resetOdometry(pose.estimatedPose.toPose2d());
+      }
+
+  }
+
   /**
    * Generates the estimated robot pose. Returns empty if:
    * <ul>
@@ -337,7 +351,7 @@ public class Vision
     /**
      * Left Camera
      */
-    LEFT_CAM("USB_Camera", //ROLL, PITCH, YAW (LEFT)
+    RIGHT_CAM("USB_Camera", //ROLL, PITCH, YAW (LEFT)
              new Rotation3d(0, Math.toRadians(0), Math.toRadians(-42)),
              new Translation3d(Units.inchesToMeters(10.125), //FORWARD
                                Units.inchesToMeters(-11), //LEFT
@@ -346,7 +360,7 @@ public class Vision
     /** VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
      * Right Camera
      */
-    RIGHT_CAM("5031_Arducam",
+    FRONT_CAM("5031_Arducam",
               new Rotation3d(0, Math.toRadians(-25), Math.toRadians(0)),
               new Translation3d(Units.inchesToMeters(12.25),
                                 Units.inchesToMeters(7),

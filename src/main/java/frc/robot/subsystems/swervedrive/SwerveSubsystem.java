@@ -364,6 +364,14 @@ public class SwerveSubsystem extends SubsystemBase
                                              Rotation2d.fromDegrees(0)));
   }
 
+  public void resetOdometryTrustLevels() {
+    swerveDrive.resetOdometry(swerveDrive.getPose());
+  }
+
+  public void resetOdometryToVision() {
+    vision.resetSwervePoseToVision(swerveDrive);
+  }
+
   /**
    * Setup the photon vision class.
    */

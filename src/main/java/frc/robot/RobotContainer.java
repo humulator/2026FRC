@@ -380,6 +380,9 @@ public class RobotContainer
     shooterController.povUp().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() + 3)));
     shooterController.povDown().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() - 3)));
 
+    driverXbox.controller.povDown().onTrue(new InstantCommand(() -> drivebase.resetOdometryTrustLevels()));
+    driverXbox.controller.povUp().onTrue(new InstantCommand(() -> drivebase.resetOdometryToVision()));
+
     
 
   }
