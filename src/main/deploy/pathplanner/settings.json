@@ -4,14 +4,19 @@
   "holonomicMode": true,
   "pathFolders": [
     "2BlueCenter",
+    "2BlueIntakeLeftRight",
     "2BlueRightLeft",
     "2RedCenter",
     "2RedIntakeLeftRight",
     "2RedRightLeft",
+    "3BlueCenter",
+    "3BlueLeft",
+    "3BlueRight",
     "BlueCenter",
     "BlueLeftAutos",
     "BlueRightAutos",
-    "2BlueIntakeLeftRight",
+    "3RedRight",
+    "3RedLeft",
     "RedCenterAutos",
     "RedLeftAutos",
     "RedRightAutos"
@@ -23,7 +28,9 @@
     "2PreLoad",
     "2Red",
     "2noPreLoad",
-    "HumberAutos"
+    "3Blue",
+    "HumberAutos",
+    "3BlueCenter"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,

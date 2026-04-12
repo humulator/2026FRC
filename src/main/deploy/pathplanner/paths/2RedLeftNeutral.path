@@ -9,7 +9,7 @@
       "prevControl": null,
       "nextControl": {
         "x": 11.640948849137125,
-        "y": 0.7757015071983862
+        "y": 0.7757015071983863
       },
       "isLocked": false,
       "linkedName": "RedLeftTrenchLine"
@@ -101,7 +101,7 @@
       },
       "prevControl": {
         "x": 11.20992612153723,
-        "y": 0.7221066412003203
+        "y": 0.7221066412003202
       },
       "nextControl": null,
       "isLocked": false,

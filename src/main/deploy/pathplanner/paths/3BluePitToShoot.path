@@ -1,0 +1,54 @@
+{
+  "version": "2025.0",
+  "waypoints": [
+    {
+      "anchor": {
+        "x": 0.4020481927710843,
+        "y": 5.925493975903614
+      },
+      "prevControl": null,
+      "nextControl": {
+        "x": 1.1920190263416925,
+        "y": 5.936902076314324
+      },
+      "isLocked": false,
+      "linkedName": "3BluePit"
+    },
+    {
+      "anchor": {
+        "x": 1.8696179314344175,
+        "y": 5.563731664813982
+      },
+      "prevControl": {
+        "x": 1.5160880679077784,
+        "y": 5.912351391347196
+      },
+      "nextControl": null,
+      "isLocked": false,
+      "linkedName": null
+    }
+  ],
+  "rotationTargets": [],
+  "constraintZones": [],
+  "pointTowardsZones": [],
+  "eventMarkers": [],
+  "globalConstraints": {
+    "maxVelocity": 3.0,
+    "maxAcceleration": 1.5,
+    "maxAngularVelocity": 360.0,
+    "maxAngularAcceleration": 540.0,
+    "nominalVoltage": 12.0,
+    "unlimited": false
+  },
+  "goalEndState": {
+    "velocity": 0,
+    "rotation": -34.33021719550332
+  },
+  "reversed": false,
+  "folder": "3BlueCenter",
+  "idealStartingState": {
+    "velocity": 0,
+    "rotation": 0.0
+  },
+  "useDefaultConstraints": true
+}

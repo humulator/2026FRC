@@ -399,3 +399,91 @@ public class RobotContainer
     drivebase.setMotorBrake(brake);
   }
 }
+// import json
+
+// # 1. PASTE YOUR JSON CONTENT BETWEEN THE TRIPLE QUOTES BELOW
+// json_input = """
+// {
+//   "version": "2025.0",
+//   "waypoints": [
+//     {
+//       "anchor": {
+//         "x": 2.0,
+//         "y": 7.0
+//       },
+//       "prevControl": null,
+//       "nextControl": {
+//         "x": 3.0,
+//         "y": 7.0
+//       },
+//       "isLocked": false,
+//       "linkedName": null
+//     },
+//     {
+//       "anchor": {
+//         "x": 3.439951807228915,
+//         "y": 4.177060240963855
+//       },
+//       "prevControl": {
+//         "x": 2.439951807228915,
+//         "y": 4.177060240963855
+//       },
+//       "nextControl": null,
+//       "isLocked": false,
+//       "linkedName": null
+//     }
+//   ],
+//   "rotationTargets": [],
+//   "constraintZones": [],
+//   "pointTowardsZones": [],
+//   "eventMarkers": [],
+//   "globalConstraints": {
+//     "maxVelocity": 3.0,
+//     "maxAcceleration": 1.5,
+//     "maxAngularVelocity": 360.0,
+//     "maxAngularAcceleration": 540.0,
+//     "nominalVoltage": 12.0,
+//     "unlimited": false
+//   },
+//   "goalEndState": {
+//     "velocity": 0,
+//     "rotation": 0.0
+//   },
+//   "reversed": false,
+//   "folder": null,
+//   "idealStartingState": {
+//     "velocity": 0,
+//     "rotation": 0.0
+//   },
+//   "useDefaultConstraints": true
+// }
+// """
+
+// X_OFFSET = 16.5
+// Y_OFFSET = 8.1
+
+// def transform_coordinates(data):
+//     if isinstance(data, dict):
+//         for key, value in data.items():
+//             if key == 'x' and isinstance(value, (int, float)):
+//                 data[key] = X_OFFSET - value
+//             elif key == 'y' and isinstance(value, (int, float)):
+//                 data[key] = Y_OFFSET - value
+//             else:
+//                 transform_coordinates(value)
+//     elif isinstance(data, list):
+//         for item in data:
+//             transform_coordinates(item)
+
+// def main():
+//     # Load the string into a dictionary
+//     path_data = json.loads(json_input)
+    
+//     # Run the transformation
+//     transform_coordinates(path_data)
+    
+//     # Print the result back to the console
+//     print(json.dumps(path_data, indent=2))
+
+// if __name__ == "__main__":
+//     main()
