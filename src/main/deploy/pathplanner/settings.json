@@ -32,8 +32,10 @@
     "3Blue",
     "3BlueCenter",
     "3Red",
+    "3RedCenter",
     "HumberAutos",
-    "3RedCenter"
+    "3RedNoPreload",
+    "3BlueNoPreload"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,
