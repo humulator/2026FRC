@@ -202,6 +202,50 @@ public class Candle extends SubsystemBase {
           state = ledState.red;
         }
       break;
+      case FULL_AUTO_PASSING:
+        if (shooterRPSCloseEnough && turretInBounds) {
+          if (feederOn) {
+            state = ledState.fastGreen;
+          } else {
+            state = ledState.blinkingGreen;
+          }
+        }
+        if (shooterRPSCloseEnough && !turretInBounds) {
+          if (feederOn) {
+            state = ledState.fastRed;
+          } else {
+            state = ledState.blinkingRed;
+          }
+        }
+        if (!shooterRPSCloseEnough && turretInBounds) {
+          state = ledState.green;
+        }
+        if (!shooterRPSCloseEnough && !turretInBounds) {
+          state = ledState.red;
+        }
+      break;
+      case TURRETAUTO_SHOOTERMANUAL_PASSING:
+        if (shooterRPSCloseEnough && turretInBounds) {
+         if (feederOn) {
+            state = ledState.fastYellow;
+          } else {
+            state = ledState.blinkingYellow;
+          }
+        }
+        if (shooterRPSCloseEnough && !turretInBounds) {
+          if (feederOn) {
+            state = ledState.fastRed;
+          } else {
+            state = ledState.blinkingRed;
+          }
+        }
+        if (!shooterRPSCloseEnough && turretInBounds) {
+          state = ledState.yellow;
+        }
+        if (!shooterRPSCloseEnough && !turretInBounds) {
+          state = ledState.red;
+        }
+      break;
     }
 
     if (changeToInactive) {

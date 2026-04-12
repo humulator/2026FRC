@@ -59,7 +59,9 @@ public class Aimmer extends SubsystemBase {
    public enum turretControlState{
     FULL_MANUAL,
     TURRETAUTO_SHOOTERMANUAL,
-    FULL_AUTO
+    FULL_AUTO,
+    FULL_AUTO_PASSING,
+    TURRETAUTO_SHOOTERMANUAL_PASSING
   }
 
   turretControlState controlState = turretControlState.FULL_MANUAL;

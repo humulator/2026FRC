@@ -34,7 +34,7 @@ public class TurretAutoPassWithoutShooter extends Command {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    turret.getAimmer().setControlState(turretControlState.TURRETAUTO_SHOOTERMANUAL);
+    turret.getAimmer().setControlState(turretControlState.TURRETAUTO_SHOOTERMANUAL_PASSING);
   }
 
   // Called every time the scheduler runs while the command is scheduled.
