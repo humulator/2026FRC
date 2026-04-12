@@ -327,11 +327,11 @@ public class Aimmer extends SubsystemBase {
     boolean autoWin = WonAuto();
     double timeUntil0 = Timer.getMatchTime() - offset;
     if (timeUntil0 < 30) {
-      return -1;
+      return timeUntil0;
     }
     if (autoWin) {
       if (timeUntil0 < 55) {
-        return -1;
+        return timeUntil0;
       } else if (timeUntil0 < 80) {
         return timeUntil0 - 55;
       } else if (timeUntil0 < 105) {
