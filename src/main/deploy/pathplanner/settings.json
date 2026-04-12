@@ -12,11 +12,12 @@
     "3BlueCenter",
     "3BlueLeft",
     "3BlueRight",
+    "3RedLeft",
+    "3RedRight",
     "BlueCenter",
     "BlueLeftAutos",
     "BlueRightAutos",
-    "3RedRight",
-    "3RedLeft",
+    "3RedCenter",
     "RedCenterAutos",
     "RedLeftAutos",
     "RedRightAutos"
@@ -30,8 +31,9 @@
     "2noPreLoad",
     "3Blue",
     "3BlueCenter",
+    "3Red",
     "HumberAutos",
-    "3Red"
+    "3RedCenter"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,
