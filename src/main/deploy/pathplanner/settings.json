@@ -29,8 +29,9 @@
     "2Red",
     "2noPreLoad",
     "3Blue",
+    "3BlueCenter",
     "HumberAutos",
-    "3BlueCenter"
+    "3Red"
   ],
   "defaultMaxVel": 3.0,
   "defaultMaxAccel": 1.5,

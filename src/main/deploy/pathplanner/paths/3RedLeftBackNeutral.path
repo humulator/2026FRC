@@ -12,7 +12,7 @@
         "y": 3.3109879518072285
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedLeftNeutral"
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": {
         "x": 8.815457831325302,
-        "y": 0.9287469879518069
+        "y": 0.9287469879518068
       },
       "isLocked": false,
       "linkedName": null
@@ -37,7 +37,7 @@
       },
       "prevControl": {
         "x": 9.044939759036145,
-        "y": 0.721120481927711
+        "y": 0.7211204819277114
       },
       "nextControl": {
         "x": 11.083057407119645,
@@ -53,11 +53,11 @@
       },
       "prevControl": {
         "x": 11.598517845923737,
-        "y": 0.7322994122843376
+        "y": 0.7322994122843374
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedLeft"
     }
   ],
   "rotationTargets": [

@@ -12,7 +12,7 @@
         "y": 3.9010843373493973
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedRightNeutral"
     },
     {
       "anchor": {
@@ -57,13 +57,13 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedRight"
     }
   ],
   "rotationTargets": [
     {
       "waypointRelativePos": 1.0,
-      "rotationDegrees": 239.3493320429471
+      "rotationDegrees": 239.34933204294714
     },
     {
       "waypointRelativePos": 2.0,

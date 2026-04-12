@@ -9,10 +9,10 @@
       "prevControl": null,
       "nextControl": {
         "x": 11.951710843373494,
-        "y": 0.6992650602409638
+        "y": 0.699265060240964
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedLeft"
     },
     {
       "anchor": {
@@ -25,7 +25,7 @@
       },
       "nextControl": {
         "x": 9.099578313253012,
-        "y": 0.710192771084337
+        "y": 0.7101927710843371
       },
       "isLocked": false,
       "linkedName": null
@@ -57,7 +57,7 @@
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedLeftNeutral"
     }
   ],
   "rotationTargets": [
