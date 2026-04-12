@@ -44,6 +44,7 @@ import frc.robot.commands.generalCommands.TurretAuto;
 import frc.robot.commands.generalCommands.TurretAutoPass;
 import frc.robot.commands.generalCommands.TurretAutoPassWithoutShooter;
 import frc.robot.commands.generalCommands.TurretAutoWithoutShooter;
+import frc.robot.commands.generalCommands.TurretSetToCustomSetting;
 import frc.robot.commands.generalCommands.WhileHeldReverseKickupAndFeeder;
 import frc.robot.commands.generalCommands.WhileHeldShootAndFeed;
 import frc.robot.commands.generalCommands.WhileHeldShooterOnly;
@@ -364,27 +365,22 @@ public class RobotContainer
     driverXbox.controller.leftBumper().whileTrue(Commands.defer(() -> drivebase.getUnderTrenchLeftCommand(), Set.of(drivebase)));
     driverXbox.controller.rightBumper().whileTrue(Commands.defer(() -> drivebase.getUnderTrenchRightCommand(), Set.of(drivebase)));
 
-    // driverXbox.controller.rightBumper().whileTrue(drivebase.getUnderTrenchRightCommand());
-    // driverXbox.controller.leftBumper().whileTrue(drivebase.getUnderTrenchLeftCommand());
-      // // RED 
-      // driverXbox.controller.leftTrigger().whileTrue(drivebase.driveToPose(new Pose2d(13.537, 0.724, new Rotation2d(Degrees.of(90))))); // RED LEFT
-      // driverXbox.controller.rightTrigger().whileTrue(drivebase.driveToPose(new Pose2d(13.242, 7.281, new Rotation2d(Degrees.of(-112))))); // RED RIGHT
-
-      // // BLUE
-      // driverXbox.controller.leftTrigger().whileTrue(drivebase.driveToPose(new Pose2d(3.593, 7.423, new Rotation2d(Degrees.of(-90))))); // BLUE LEFT
-      // driverXbox.controller.rightTrigger().whileTrue(drivebase.driveToPose(new Pose2d(3.429, 0.636, new Rotation2d(Degrees.of(90))))); // BLUE RIGHT
-    //driverXbox.controller.a().whileTrue(drivebase.driveToPose(new Pose2d(drivebase.getPose().getTranslation(), aimmer.getAngleToVirtualHub().plus(aimmer.turretPose.getRotation()))));
-
-    //shooterController.povUp().whileTrue(new CalibrateTurret(aimmer, turret));
-
-    shooterController.povUp().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() + 3)));
-    shooterController.povDown().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() - 3)));
+    // shooterController.povUp().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() + 3)));
+    // shooterController.povDown().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() - 3)));
 
     driverXbox.controller.povDown().onTrue(new InstantCommand(() -> drivebase.resetOdometryTrustLevels()));
     driverXbox.controller.povUp().onTrue(new InstantCommand(() -> drivebase.resetOdometryToVision()));
 
-    
+    // ONLY CONSIDER THE BLUE ALLIANCE
+    Pose2d blueLeftTrenchWall = new Pose2d(3.5, 6.9, new Rotation2d(Degrees.of(-90)));
+    shooterController.povLeft().onTrue(new TurretSetToCustomSetting(shooter, turret, blueLeftTrenchWall));
 
+    // ONLY CONSIDER THE BLUE ALLIANCE
+    Pose2d blueRightTrenchWall = new Pose2d(3.5, 1.1, new Rotation2d(Degrees.of(90)));
+    shooterController.povRight().onTrue(new TurretSetToCustomSetting(shooter, turret, blueRightTrenchWall));
+
+    Pose2d blueCenterNearTower = new Pose2d(1.6, 3.8, new Rotation2d(Degrees.of(0)));
+    shooterController.povDown().onTrue(new TurretSetToCustomSetting(shooter, turret, blueCenterNearTower));
   }
 
   /**

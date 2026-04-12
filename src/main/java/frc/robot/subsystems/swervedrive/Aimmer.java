@@ -110,6 +110,10 @@ public class Aimmer extends SubsystemBase {
     turretPose = botPose.plus(robotToTurret);
   }
 
+  public Pose2d getTurretPoseFromArbBotPose(Pose2d botPose) {
+    return botPose.plus(robotToTurret);
+  }
+
   public Rotation2d getAngleToLineOfYourAlliance() {
     Translation2d relativeVector = getPoseOfPointOnLineClosestToBot().getTranslation().minus(turretPose.getTranslation());
     Rotation2d fieldAngle = relativeVector.getAngle();
@@ -126,6 +130,13 @@ public class Aimmer extends SubsystemBase {
     Translation2d relativeVector = getPoseOfHubWithFieldSpeeds().getTranslation().minus(turretPose.getTranslation());
     Rotation2d fieldAngle = relativeVector.getAngle();
     return fieldAngle.minus(turretPose.getRotation());
+  }
+
+  public Rotation2d getAngleToRealBlueHubFromArbBotPose(Pose2d botpose) {
+    Pose2d arbTurretPose = getTurretPoseFromArbBotPose(botpose);
+    Translation2d relativeVector = getBlueHubPose().getTranslation().minus(arbTurretPose.getTranslation());
+    Rotation2d fieldAngle = relativeVector.getAngle();
+    return fieldAngle.minus(arbTurretPose.getRotation());
   }
 
   public boolean getIsRedAlliance() {
@@ -146,6 +157,11 @@ public class Aimmer extends SubsystemBase {
     } else {
       return redAlliancePose;
     }
+  }
+
+  public Pose2d getBlueHubPose() {
+    return blueAlliancePose;
+    
   }
 
   //2 meters x for the blue
@@ -173,6 +189,11 @@ public class Aimmer extends SubsystemBase {
   /** in meters */
   public double getDistanceTurretToVirtualHub() {
     return turretPose.getTranslation().getDistance(getPoseOfHubWithFieldSpeeds().getTranslation());
+  }
+
+  public double getDistanceTurretToRealBlueHubFromArbBotPose(Pose2d botPose) {
+    Pose2d arbTurretPose = getTurretPoseFromArbBotPose(botPose);
+    return arbTurretPose.getTranslation().getDistance(getBlueHubPose().getTranslation());
   }
 
   public double getTimeFromDistance(double meters) {
