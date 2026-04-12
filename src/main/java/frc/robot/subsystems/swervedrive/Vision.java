@@ -160,7 +160,7 @@ public class Vision
     if (SwerveDriveTelemetry.isSimulation && swerveDrive.getSimulationDriveTrainPose().isPresent())
     {
     }
-      Optional<EstimatedRobotPose> poseEst = getEstimatedGlobalPose(Cameras.RIGHT_CAM);
+      Optional<EstimatedRobotPose> poseEst = getEstimatedGlobalPose(Cameras.FRONT_CAM);
       if (poseEst.isPresent())
       {
         var pose = poseEst.get();
