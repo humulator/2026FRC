@@ -45,7 +45,7 @@ public static final double minTurretSetpoint = -75;
 public static final double turretTooCloseMeters = 2.5;
 
 public static final double maxShooterRPS = 90;
-public static final double minShooterRPS = 20;
+public static final double minShooterRPS = 35;
 
 //THESE ARE NOT USED
 public static final double maxShooterVoltage = 0.01;

@@ -24,7 +24,7 @@ public class Shooter extends SubsystemBase {
 
   Aimmer aimmer;
 
-  double manualTargetRotationsPerSecond = 20;
+  double manualTargetRotationsPerSecond = 35;
   double manualTargetVoltage = 0;
 
   /** Creates a new Shooter. */
@@ -130,6 +130,7 @@ public class Shooter extends SubsystemBase {
     SmartDashboard.putNumber("targetRPS", getTargetManualRPS());
     SmartDashboard.putString("CommandRunningShooter", getTheCurrentCommand());
     SmartDashboard.putBoolean("ShooterisShooterRPSCloseEnoughToTarget", isCloseEnough());
+    SmartDashboard.putNumber("getDistanceFromRPSManual", aimmer.getDistanceFromSpeed(manualTargetRotationsPerSecond));
     // This method will be called once per scheduler run
   }
 }

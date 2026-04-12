@@ -50,6 +50,7 @@ public class Aimmer extends SubsystemBase {
   InterpolatingDoubleTreeMap speedFromDistance = new InterpolatingDoubleTreeMap();
   InterpolatingDoubleTreeMap voltageFromDistance = new InterpolatingDoubleTreeMap();
   InterpolatingDoubleTreeMap timeFromDistance = new InterpolatingDoubleTreeMap();
+  InterpolatingDoubleTreeMap distanceFromSpeed = new InterpolatingDoubleTreeMap();
 
   ChassisSpeeds robotSpeed;
 
@@ -74,6 +75,13 @@ public class Aimmer extends SubsystemBase {
     speedFromDistance.put(4.0, 55.0);
     speedFromDistance.put(3.0, 50.0);
     speedFromDistance.put(2.0, 46.5);
+
+    distanceFromSpeed.put(79.0, 6.5);
+    distanceFromSpeed.put(68.0, 5.5);
+    distanceFromSpeed.put(60.0, 4.7);
+    distanceFromSpeed.put(55.0, 4.0);
+    distanceFromSpeed.put(50.0, 3.0);
+    distanceFromSpeed.put(46.5, 2.0);
     //speedFromDistance.put(5.0, 15.0);
 
 
@@ -206,6 +214,10 @@ public class Aimmer extends SubsystemBase {
 
   public double getSpeedFromDistance(double meters) {
     return speedFromDistance.get(meters);
+  }
+
+  public double getDistanceFromSpeed(double speed) {
+    return distanceFromSpeed.get(speed);
   }
 
   public Pose2d getPoseOfHubWithFieldSpeeds() {
