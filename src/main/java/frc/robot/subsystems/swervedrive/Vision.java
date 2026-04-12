@@ -148,7 +148,9 @@ public class Vision
         swerveDrive.addVisionMeasurement(pose.estimatedPose.toPose2d(),
                                          pose.timestampSeconds,
                                          camera.curStdDevs);
+        swerveDrive.field.getObject(camera.toString()).setPose(pose.estimatedPose.toPose2d());
       }
+      
     }
 
   }
