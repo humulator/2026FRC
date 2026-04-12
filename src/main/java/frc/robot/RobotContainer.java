@@ -408,38 +408,93 @@ public class RobotContainer
 //   "waypoints": [
 //     {
 //       "anchor": {
-//         "x": 2.0,
-//         "y": 7.0
+//         "x": 7.77103614458,
+//         "y": 4.47234824353
 //       },
 //       "prevControl": null,
 //       "nextControl": {
-//         "x": 3.0,
-//         "y": 7.0
+//         "x": 7.778253012048193,
+//         "y": 4.789012048192771
+//       },
+//       "isLocked": false,
+//       "linkedName": "BlueLeftNeutral"
+//     },
+//     {
+//       "anchor": {
+//         "x": 7.77103614458,
+//         "y": 6.25054216868
+//       },
+//       "prevControl": {
+//         "x": 7.795705686615904,
+//         "y": 5.628151368830645
+//       },
+//       "nextControl": {
+//         "x": 7.7345421686746985,
+//         "y": 7.171253012048193
 //       },
 //       "isLocked": false,
 //       "linkedName": null
 //     },
 //     {
 //       "anchor": {
-//         "x": 3.439951807228915,
-//         "y": 4.177060240963855
+//         "x": 5.84078182854,
+//         "y": 7.4
 //       },
 //       "prevControl": {
-//         "x": 2.439951807228915,
-//         "y": 4.177060240963855
+//         "x": 7.505060240963855,
+//         "y": 7.378879518072289
+//       },
+//       "nextControl": {
+//         "x": 5.466942592880356,
+//         "y": 7.404744197101686
+//       },
+//       "isLocked": false,
+//       "linkedName": null
+//     },
+//     {
+//       "anchor": {
+//         "x": 3.625722891566265,
+//         "y": 7.389807228915663
+//       },
+//       "prevControl": {
+//         "x": 4.951482154076264,
+//         "y": 7.367700587715662
 //       },
 //       "nextControl": null,
 //       "isLocked": false,
-//       "linkedName": null
+//       "linkedName": "3BlueLeft"
 //     }
 //   ],
-//   "rotationTargets": [],
-//   "constraintZones": [],
+//   "rotationTargets": [
+//     {
+//       "waypointRelativePos": 1.0,
+//       "rotationDegrees": 90.0
+//     },
+//     {
+//       "waypointRelativePos": 2.0,
+//       "rotationDegrees": 0.0
+//     }
+//   ],
+//   "constraintZones": [
+//     {
+//       "name": "Constraints Zone",
+//       "minWaypointRelativePos": 0.0,
+//       "maxWaypointRelativePos": 0.34689826302730076,
+//       "constraints": {
+//         "maxVelocity": 1.0,
+//         "maxAcceleration": 1.5,
+//         "maxAngularVelocity": 360.0,
+//         "maxAngularAcceleration": 540.0,
+//         "nominalVoltage": 12.0,
+//         "unlimited": false
+//       }
+//     }
+//   ],
 //   "pointTowardsZones": [],
 //   "eventMarkers": [],
 //   "globalConstraints": {
-//     "maxVelocity": 3.0,
-//     "maxAcceleration": 1.5,
+//     "maxVelocity": 4.0,
+//     "maxAcceleration": 2.0,
 //     "maxAngularVelocity": 360.0,
 //     "maxAngularAcceleration": 540.0,
 //     "nominalVoltage": 12.0,
@@ -453,37 +508,53 @@ public class RobotContainer
 //   "folder": null,
 //   "idealStartingState": {
 //     "velocity": 0,
-//     "rotation": 0.0
+//     "rotation": 90.0
 //   },
-//   "useDefaultConstraints": true
+//   "useDefaultConstraints": false
 // }
 // """
 
-// X_OFFSET = 16.5
+// X_OFFSET = 16.55
 // Y_OFFSET = 8.1
 
-// def transform_coordinates(data):
+// def process_path(data):
 //     if isinstance(data, dict):
-//         for key, value in data.items():
-//             if key == 'x' and isinstance(value, (int, float)):
-//                 data[key] = X_OFFSET - value
-//             elif key == 'y' and isinstance(value, (int, float)):
-//                 data[key] = Y_OFFSET - value
+//         for key in list(data.keys()):
+//             # Flip coordinates
+//             if key == 'x' and isinstance(data[key], (int, float)):
+//                 data[key] = X_OFFSET - data[key]
+//             elif key == 'y' and isinstance(data[key], (int, float)):
+//                 data[key] = Y_OFFSET - data[key]
+            
+//             # 2. Handle Rotation (+180 degrees)
+//             elif key in ['rotation', 'rotationDegrees'] and isinstance(data[key], (int, float)):
+//                 data[key] = data[key] + 180.0
+            
+//             # Set linkedName to null
+//             elif key == 'linkedName':
+//                 data[key] = None
+            
+//             # Continue searching through nested objects
 //             else:
-//                 transform_coordinates(value)
+//                 process_path(data[key])
+                
 //     elif isinstance(data, list):
 //         for item in data:
-//             transform_coordinates(item)
+//             process_path(item)
 
 // def main():
-//     # Load the string into a dictionary
-//     path_data = json.loads(json_input)
-    
-//     # Run the transformation
-//     transform_coordinates(path_data)
-    
-//     # Print the result back to the console
-//     print(json.dumps(path_data, indent=2))
+//     try:
+//         # Parse the text you pasted
+//         path_data = json.loads(json_input)
+        
+//         # Run the math and the null reset
+//         process_path(path_data)
+        
+//         # Convert back to JSON text and print
+//         print(json.dumps(path_data, indent=2))
+        
+//     except Exception as e:
+//         print(f"Error: Make sure the JSON you pasted is complete! \n{e}")
 
 // if __name__ == "__main__":
 //     main()
