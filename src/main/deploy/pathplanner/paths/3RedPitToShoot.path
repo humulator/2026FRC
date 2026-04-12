@@ -12,7 +12,7 @@
         "y": 2.163097923685676
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3RedPit"
     },
     {
       "anchor": {
@@ -42,7 +42,7 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 145.66978280449666
+    "rotation": 180.0
   },
   "reversed": false,
   "folder": "3RedCenter",
