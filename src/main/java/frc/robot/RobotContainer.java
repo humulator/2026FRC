@@ -4,6 +4,7 @@
 
 package frc.robot;
 
+import com.ctre.phoenix6.SignalLogger;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
@@ -381,6 +382,8 @@ public class RobotContainer
 
     Pose2d blueCenterNearTower = new Pose2d(1.6, 3.8, new Rotation2d(Degrees.of(0)));
     shooterController.povDown().onTrue(new TurretSetToCustomSetting(shooter, turret, blueCenterNearTower));
+
+    SignalLogger.stop();
   }
 
   /**
