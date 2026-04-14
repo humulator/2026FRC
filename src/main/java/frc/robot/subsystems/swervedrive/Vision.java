@@ -3,6 +3,23 @@ package frc.robot.subsystems.swervedrive;
 import static edu.wpi.first.units.Units.Microseconds;
 import static edu.wpi.first.units.Units.Seconds;
 
+import java.awt.Desktop;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.Supplier;
+
+import org.photonvision.EstimatedRobotPose;
+import org.photonvision.PhotonCamera;
+import org.photonvision.PhotonPoseEstimator;
+import org.photonvision.PhotonPoseEstimator.PoseStrategy;
+import org.photonvision.PhotonUtils;
+import org.photonvision.simulation.PhotonCameraSim;
+import org.photonvision.simulation.SimCameraProperties;
+import org.photonvision.simulation.VisionSystemSim;
+import org.photonvision.targeting.PhotonPipelineResult;
+import org.photonvision.targeting.PhotonTrackedTarget;
+
 import edu.wpi.first.apriltag.AprilTagFieldLayout;
 import edu.wpi.first.apriltag.AprilTagFields;
 import edu.wpi.first.math.Matrix;
@@ -22,21 +39,6 @@ import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import frc.robot.Robot;
-import java.awt.Desktop;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.function.Supplier;
-import org.photonvision.EstimatedRobotPose;
-import org.photonvision.PhotonCamera;
-import org.photonvision.PhotonPoseEstimator;
-import org.photonvision.PhotonPoseEstimator.PoseStrategy;
-import org.photonvision.PhotonUtils;
-import org.photonvision.simulation.PhotonCameraSim;
-import org.photonvision.simulation.SimCameraProperties;
-import org.photonvision.simulation.VisionSystemSim;
-import org.photonvision.targeting.PhotonPipelineResult;
-import org.photonvision.targeting.PhotonTrackedTarget;
 import swervelib.SwerveDrive;
 import swervelib.telemetry.SwerveDriveTelemetry;
 
@@ -354,11 +356,18 @@ public class Vision
      * Left Camera
      */
     RIGHT_CAM("USB_Camera", //ROLL, PITCH, YAW (LEFT)
-             new Rotation3d(0, Math.toRadians(0), Math.toRadians(-42)),
-             new Translation3d(Units.inchesToMeters(10.125), //FORWARD
-                               Units.inchesToMeters(-11), //LEFT
+             new Rotation3d(0, Math.toRadians(-25), Math.toRadians(-90)),
+             new Translation3d(Units.inchesToMeters(10.5), //FORWARD
+                               Units.inchesToMeters(-9), //LEFT
                                Units.inchesToMeters(7.375)), //UP
-             VecBuilder.fill(4, 4, 8), VecBuilder.fill(1, 1, 2)),
+             VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
+
+    LEFT_CAM("Arducam_OV9281_USB_Camera", //ROLL, PITCH, YAW (LEFT)
+             new Rotation3d(0, Math.toRadians(-25), Math.toRadians(90)),
+             new Translation3d(Units.inchesToMeters(10.625), //FORWARD
+                               Units.inchesToMeters(9), //LEFT
+                               Units.inchesToMeters(7.375)), //UP
+             VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
     /** VecBuilder.fill(4, 4, 8), VecBuilder.fill(0.5, 0.5, 1)),
      * Right Camera
      */

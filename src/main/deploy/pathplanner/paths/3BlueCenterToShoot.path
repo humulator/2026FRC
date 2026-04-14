@@ -3,16 +3,16 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 0.4020481927710843,
-        "y": 5.925493975903614
+        "x": 3.5985134603931943,
+        "y": 4.096298121913284
       },
       "prevControl": null,
       "nextControl": {
-        "x": 1.1920190263416925,
-        "y": 5.936902076314324
+        "x": 2.5757349397559572,
+        "y": 4.906433734940926
       },
       "isLocked": false,
-      "linkedName": "3BluePit"
+      "linkedName": null
     },
     {
       "anchor": {
@@ -20,8 +20,8 @@
         "y": 5.563731664813982
       },
       "prevControl": {
-        "x": 1.5160880679077784,
-        "y": 5.912351391347196
+        "x": 2.6850120481896926,
+        "y": 4.9173614457843
       },
       "nextControl": null,
       "isLocked": false,
@@ -48,7 +48,7 @@
   "folder": "3BlueCenter",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 0.0
+    "rotation": 360.0
   },
   "useDefaultConstraints": true
 }

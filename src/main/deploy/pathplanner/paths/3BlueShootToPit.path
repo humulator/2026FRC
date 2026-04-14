@@ -3,36 +3,36 @@
   "waypoints": [
     {
       "anchor": {
-        "x": 12.957060240963855,
-        "y": 4.032216867469879
+        "x": 1.8696179314344175,
+        "y": 5.563731664813982
       },
       "prevControl": null,
       "nextControl": {
-        "x": 14.508795180722894,
-        "y": 1.9887349397590341
+        "x": 1.4283253012048203,
+        "y": 5.736939759036144
       },
       "isLocked": false,
-      "linkedName": null
+      "linkedName": "3BluePitShoot"
     },
     {
       "anchor": {
-        "x": 16.147951807228917,
-        "y": 2.1745060240963854
+        "x": 0.4020481927710843,
+        "y": 5.925493975903614
       },
       "prevControl": {
-        "x": 15.21909638554217,
-        "y": 2.1854337349397586
+        "x": 1.056783132530124,
+        "y": 5.813433734939759
       },
       "nextControl": null,
       "isLocked": false,
-      "linkedName": "3RedPit"
+      "linkedName": "3BluePit"
     }
   ],
   "rotationTargets": [],
   "constraintZones": [
     {
       "name": "Constraints Zone",
-      "minWaypointRelativePos": 0.7129554655870393,
+      "minWaypointRelativePos": 0.6672064777327936,
       "maxWaypointRelativePos": 1.0,
       "constraints": {
         "maxVelocity": 0.75,
@@ -56,13 +56,13 @@
   },
   "goalEndState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": 0.0
   },
   "reversed": false,
-  "folder": "3RedCenter",
+  "folder": "3BlueCenter",
   "idealStartingState": {
     "velocity": 0,
-    "rotation": 180.0
+    "rotation": -34.33021719550332
   },
   "useDefaultConstraints": true
 }
