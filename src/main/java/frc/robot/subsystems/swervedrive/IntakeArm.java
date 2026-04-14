@@ -46,8 +46,8 @@ public class IntakeArm extends SubsystemBase {
     intakeArmConfig.Slot0.kI = 0;
     intakeArmConfig.Slot0.kD = 0;
 
-    intakeArmConfig.CurrentLimits.StatorCurrentLimit = 20;
-    intakeArmConfig.CurrentLimits.SupplyCurrentLimit = 20;
+    intakeArmConfig.CurrentLimits.StatorCurrentLimit = 16;
+    intakeArmConfig.CurrentLimits.SupplyCurrentLimit = 16;
 
     intakeArmConfig.CurrentLimits.StatorCurrentLimitEnable = true;
     intakeArmConfig.CurrentLimits.SupplyCurrentLimitEnable = true;
@@ -90,6 +90,10 @@ public class IntakeArm extends SubsystemBase {
     intakeArm.setControl(PIDIntakeArm.withPosition(setpoint).withVelocity(ff));
     curSetpoint = setpoint;
     intakeArmState = state;
+  }
+
+  public void setIntakeZero(double encoderValue) {
+    intakeArm.setPosition(encoderValue);
   }
 
   public IntakeArmState getIntakeState() {

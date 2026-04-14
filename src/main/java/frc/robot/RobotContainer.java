@@ -283,7 +283,10 @@ public class RobotContainer
     Trigger L1WithoutL2 = driverXbox.controller.leftTrigger().and(driverXbox.controller.rightTrigger().negate());
     Trigger L2WithoutL1 = driverXbox.controller.rightTrigger().and(driverXbox.controller.leftTrigger().negate());
     Trigger L2AndL1 = driverXbox.controller.leftTrigger().and(driverXbox.controller.rightTrigger());
-    Trigger intakeReverse = driverXbox.controller.back();
+    Trigger intakeReverse = driverXbox.controller.a();
+
+    driverXbox.controller.back().onTrue(new InstantCommand(() -> intakeArm.setIntakeZero(Constants.intakeDownSetpoint)));
+    driverXbox.controller.start().onTrue(new InstantCommand(() -> intakeArm.setIntakeZero(Constants.intakeUpSetpoint)));
 
     //Intake stuff
     // L1WithoutL2.onTrue(new ParallelCommandGroup(new IntakeToDown(intakeArm)));
@@ -369,8 +372,8 @@ public class RobotContainer
     // shooterController.povUp().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() + 3)));
     // shooterController.povDown().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() - 3)));
 
-    driverXbox.controller.povDown().onTrue(new InstantCommand(() -> drivebase.resetOdometryTrustLevels()));
-    driverXbox.controller.povUp().onTrue(new InstantCommand(() -> drivebase.resetOdometryToVision()));
+    //driverXbox.controller.povDown().onTrue(new InstantCommand(() -> drivebase.resetOdometryTrustLevels()));
+    driverXbox.controller.y().onTrue(new InstantCommand(() -> drivebase.resetOdometryToVision()));
 
     // ONLY CONSIDER THE BLUE ALLIANCE
     Pose2d blueLeftTrenchWall = new Pose2d(3.5, 6.9, new Rotation2d(Degrees.of(-90)));
