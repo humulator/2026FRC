@@ -4,7 +4,9 @@
 
 package frc.robot.commands.generalCommands;
 
+import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.subsystems.swervedrive.Shooter;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import frc.robot.subsystems.swervedrive.Turret;
@@ -16,11 +18,13 @@ public class TurretAuto extends Command {
   Turret turret;
   SwerveSubsystem swerve;
   Shooter shooter;
+  CommandXboxController controller;
   /** Creates a new TurretAuto. */
-  public TurretAuto(Turret t, SwerveSubsystem s, Shooter ss) {
+  public TurretAuto(Turret t, SwerveSubsystem s, Shooter ss, CommandXboxController c) {
     turret = t;
     swerve = s;
     shooter = ss;
+    controller = c;
     addRequirements(turret);
     // Use addRequirements() here to declare subsystem dependencies.
   }
@@ -34,8 +38,8 @@ public class TurretAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    turret.setDegreesReference(-turret.getAimmer().getAngleToVirtualHub().getDegrees(), 0);
-    shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()));
+    turret.setDegreesReference(-turret.getAimmer().getAngleToVirtualHub().getDegrees() - MathUtil.applyDeadband(controller.getRightX(), 0.1) * -20, 0);
+    shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()) - MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 20);
     
     //turret.setReference(turret.getAimmer().getAngleToVirtualHub().getRadians(), 0);
     //shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()));

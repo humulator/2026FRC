@@ -71,6 +71,7 @@ public class Aimmer extends SubsystemBase {
     this.swerve = swerve;
 
     //METERS as distanc2
+    speedFromDistance.put(12.0, 90.0);
     speedFromDistance.put(6.5, 65.0);
     speedFromDistance.put(5.25, 59.5);
     speedFromDistance.put(4.67, 57.0);
@@ -78,9 +79,10 @@ public class Aimmer extends SubsystemBase {
     speedFromDistance.put(3.0, 50.0);
     speedFromDistance.put(2.0, 46.5);
 
-    distanceFromSpeed.put(79.0, 6.5);
-    distanceFromSpeed.put(68.0, 5.5);
-    distanceFromSpeed.put(60.0, 4.7);
+    distanceFromSpeed.put(90.0, 12.0);
+    distanceFromSpeed.put(65.0, 6.5);
+    distanceFromSpeed.put(59.5, 5.25);
+    distanceFromSpeed.put(57.0, 4.67);
     distanceFromSpeed.put(55.0, 4.0);
     distanceFromSpeed.put(50.0, 3.0);
     distanceFromSpeed.put(46.5, 2.0);

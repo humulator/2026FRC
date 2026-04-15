@@ -260,7 +260,7 @@ public class RobotContainer
 
     //H WUAHFUYWGAGAHDSEWRTYUIJKLMNBVGFDRTYUIJKLMNBVGFTYUIOJKMNBHHJYUIJKNBHGYHUJKNBHGUJ
 
-    NamedCommands.registerCommand("TurretAuto", new TurretAuto(turret, drivebase, shooter));
+    NamedCommands.registerCommand("TurretAuto", new TurretAuto(turret, drivebase, shooter, shooterController));
     NamedCommands.registerCommand("WhileHeldShooterOnly", new WhileHeldShooterOnly(shooter, turret, shooterController));
     //NamedCommands.registerCommand("WhileHeldShootAndFeed", new WhileHeldShootAndFeed(new KickupWhileHeld(kickup), new WhileHeldShooterOnly(shooter, turret, shooterController), new FeederWhileHeld(feeder)));
     NamedCommands.registerCommand("WhileHeldShootAndFeed", new SequentialCommandGroup((new WhileHeldShooterOnly(shooter, turret, shooterController).withTimeout(1)), new WhileHeldShootAndFeed(new KickupWhileHeld(kickup), new WhileHeldShooterOnly(shooter, turret, shooterController), new FeederWhileHeld(feeder))));
@@ -304,7 +304,7 @@ public class RobotContainer
 
     // Turret and non-required shooting yUP xLEFT aDOWN bRIGHT
     turret.setDefaultCommand(new DefaultTurret(shooter, turret, shooterController));
-    shooterController.y().toggleOnTrue(new TurretAuto(turret, drivebase, shooter));
+    shooterController.y().toggleOnTrue(new TurretAuto(turret, drivebase, shooter, shooterController));
     shooterController.x().toggleOnTrue(new TurretAutoPass(turret, drivebase, shooter));
     shooterController.a().toggleOnTrue(new TurretAutoWithoutShooter(turret, drivebase, shooter, shooterController));
     shooterController.b().toggleOnTrue(new TurretAutoPassWithoutShooter(turret, drivebase, shooter, shooterController));
