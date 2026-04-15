@@ -38,8 +38,8 @@ public class TurretAuto extends Command {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    turret.setDegreesReference(-turret.getAimmer().getAngleToVirtualHub().getDegrees() - MathUtil.applyDeadband(controller.getRightX(), 0.1) * -20, 0);
-    shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()) - MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 20);
+    turret.setDegreesReference(-turret.getAimmer().getAngleToVirtualHub().getDegrees() - MathUtil.applyDeadband(controller.getRightX(), 0.1) * -15, 0);
+    shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()) - MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 15);
     
     //turret.setReference(turret.getAimmer().getAngleToVirtualHub().getRadians(), 0);
     //shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()));
