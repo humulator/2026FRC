@@ -328,14 +328,16 @@ public class RobotContainer
 
     Trigger intakeArmNearDown = new Trigger(() -> intakeArm.isNearTarget(Constants.intakeDownSetpoint));
     intakeArmNearDown.onTrue(Commands.runEnd(
-        () -> driverXbox.controller.getHID().setRumble(RumbleType.kLeftRumble, 1.0),
-        () -> driverXbox.controller.getHID().setRumble(RumbleType.kLeftRumble, 0)
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0),
+        driverXbox
     ).withTimeout(0.5));
 
     Trigger intakeArmNearUp = new Trigger(() -> intakeArm.isNearTarget(Constants.intakeUpSetpoint));
     intakeArmNearUp.onTrue(Commands.runEnd(
-        () -> driverXbox.controller.getHID().setRumble(RumbleType.kLeftRumble, 1.0),
-        () -> driverXbox.controller.getHID().setRumble(RumbleType.kLeftRumble, 0)
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0),
+        driverXbox
     ).withTimeout(0.5));
 
     Trigger shooterIsNear = new Trigger(() -> shooter.isCloseEnough());
@@ -346,8 +348,9 @@ public class RobotContainer
 
     Trigger slowDriveTrain = new Trigger(() -> (driverXbox.getSpeedState() == driveSpeedState.slow));
     slowDriveTrain.whileTrue(Commands.runEnd(
-        () -> driverXbox.controller.getHID().setRumble(RumbleType.kRightRumble, 1.0),
-        () -> driverXbox.controller.getHID().setRumble(RumbleType.kRightRumble, 0)
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 1.0),
+        () -> driverXbox.controller.getHID().setRumble(RumbleType.kBothRumble, 0),
+        driverXbox
     ));
 
 
