@@ -39,7 +39,7 @@ public class TurretAuto extends Command {
   @Override
   public void execute() {
     turret.setDegreesReference(-turret.getAimmer().getAngleToVirtualHub().getDegrees() - MathUtil.applyDeadband(controller.getRightX(), 0.1) * -15, 0);
-    shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()) - MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 15);
+    shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()) - MathUtil.applyDeadband(controller.getLeftY(), 0.1) * 5);
     
     //turret.setReference(turret.getAimmer().getAngleToVirtualHub().getRadians(), 0);
     //shooter.setTargetManualRPS(shooter.getSpeedFromDistance(turret.getAimmer().getDistanceTurretToVirtualHub()));
