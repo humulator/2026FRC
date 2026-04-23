@@ -71,14 +71,183 @@
                                 }
                               ]
                             }
+                          },
+                          {
+                            "type": "deadline",
+                            "data": {
+                              "commands": [
+                                {
+                                  "type": "path",
+                                  "data": {
+                                    "pathName": "Intake2BlueLeftNeutral"
+                                  }
+                                },
+                                {
+                                  "type": "sequential",
+                                  "data": {
+                                    "commands": [
+                                      {
+                                        "type": "sequential",
+                                        "data": {
+                                          "commands": [
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToDown"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.7
+                                              }
+                                            },
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToUp"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.25
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "sequential",
+                                        "data": {
+                                          "commands": [
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToDown"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.7
+                                              }
+                                            },
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToUp"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.25
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "sequential",
+                                        "data": {
+                                          "commands": [
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToDown"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.7
+                                              }
+                                            },
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToUp"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.25
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "sequential",
+                                        "data": {
+                                          "commands": [
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToDown"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.7
+                                              }
+                                            },
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToUp"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.25
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      {
+                                        "type": "sequential",
+                                        "data": {
+                                          "commands": [
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToDown"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.7
+                                              }
+                                            },
+                                            {
+                                              "type": "named",
+                                              "data": {
+                                                "name": "IntakeToUp"
+                                              }
+                                            },
+                                            {
+                                              "type": "wait",
+                                              "data": {
+                                                "waitTime": 0.25
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
+                            }
                           }
                         ]
-                      }
-                    },
-                    {
-                      "type": "path",
-                      "data": {
-                        "pathName": "Intake2BlueLeftNeutral"
                       }
                     },
                     {

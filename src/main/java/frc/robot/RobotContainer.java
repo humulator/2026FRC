@@ -268,7 +268,7 @@ public class RobotContainer
     //   new WhileHeldShooterOnly(shooter, turret, shooterController), 
     //   new WhileHeldShootAndFeed(new KickupWhileHeld(kickup), new WhileHeldShooterOnly(shooter, turret, shooterController), new FeederWhileHeld(feeder))
     //   , shooter));
-    NamedCommands.registerCommand("IntakeToDown", new IntakeToDown(intakeArm));
+    NamedCommands.registerCommand("IntakeToDown", new IntakeToDown(intakeArm)); //INTAKETODOWN
     NamedCommands.registerCommand("IntakeRunForward", new IntakeRunForward(intakeRollers));
     NamedCommands.registerCommand("IntakeToUp", new IntakeToUp(intakeArm));
     //NamedCommands.registerCommand("IntakeToUp", Commands.none());
@@ -312,7 +312,7 @@ public class RobotContainer
     // For the SOTM
     Trigger feederOn = new Trigger(() -> (feeder.getFeederState() == feederState.ON));
 
-    feederOn.onTrue(new InstantCommand(() -> driverXbox.setFactor(0.4, driveSpeedState.slow)));
+    feederOn.onTrue(new InstantCommand(() -> driverXbox.setFactor(0.35, driveSpeedState.slow)));
     feederOn.onFalse(new InstantCommand(() -> driverXbox.setFactor(1, driveSpeedState.normal)));
 
     // required shooting and feeding
