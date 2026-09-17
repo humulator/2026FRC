@@ -359,7 +359,7 @@ public class RobotContainer
     //Auto Align 
 
     // AUTO ALIGN USED IN TORUNEY
-    /*driverXbox.controller.povLeft().whileTrue(new ConditionalCommand(
+    driverXbox.controller.povLeft().whileTrue(new ConditionalCommand(
         drivebase.driveToPose(new Pose2d(13.537, 0.724, new Rotation2d(Degrees.of(90)))), 
         drivebase.driveToPose(new Pose2d(3.593, 7.423, new Rotation2d(Degrees.of(-90)))), 
         () -> aimmer.getIsRedAlliance()
@@ -371,8 +371,9 @@ public class RobotContainer
         () -> aimmer.getIsRedAlliance()
     ));
 
+    // AUTO ALIGN USED IN TORUNEY
     driverXbox.controller.leftBumper().whileTrue(Commands.defer(() -> drivebase.getUnderTrenchLeftCommand(), Set.of(drivebase)));
-    driverXbox.controller.rightBumper().whileTrue(Commands.defer(() -> drivebase.getUnderTrenchRightCommand(), Set.of(drivebase)));*/
+    driverXbox.controller.rightBumper().whileTrue(Commands.defer(() -> drivebase.getUnderTrenchRightCommand(), Set.of(drivebase)));
 
     // shooterController.povUp().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() + 3)));
     // shooterController.povDown().onTrue(new InstantCommand(() -> shooter.setTargetManualRPS(shooter.getTargetManualRPS() - 3)));
