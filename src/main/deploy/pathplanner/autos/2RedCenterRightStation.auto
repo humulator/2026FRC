@@ -21,7 +21,27 @@
                     {
                       "type": "sequential",
                       "data": {
-                        "commands": []
+                        "commands": [
+                          {
+                            "type": "parallel",
+                            "data": {
+                              "commands": [
+                                {
+                                  "type": "named",
+                                  "data": {
+                                    "name": "IntakeToDown"
+                                  }
+                                },
+                                {
+                                  "type": "named",
+                                  "data": {
+                                    "name": "IntakeRunForward"
+                                  }
+                                }
+                              ]
+                            }
+                          }
+                        ]
                       }
                     },
                     {
@@ -60,6 +80,25 @@
                                   "type": "named",
                                   "data": {
                                     "name": "IntakeRunZero"
+                                  }
+                                }
+                              ]
+                            }
+                          },
+                          {
+                            "type": "parallel",
+                            "data": {
+                              "commands": [
+                                {
+                                  "type": "named",
+                                  "data": {
+                                    "name": "IntakeToDown"
+                                  }
+                                },
+                                {
+                                  "type": "named",
+                                  "data": {
+                                    "name": "IntakeRunForward"
                                   }
                                 }
                               ]
