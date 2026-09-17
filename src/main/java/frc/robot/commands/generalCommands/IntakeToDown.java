@@ -25,6 +25,6 @@ public class IntakeToDown extends InstantCommand {
   @Override
   public void initialize() {
     //intakeArm.setReference(Constants.intakeUpSetpoint, 0, IntakeArmState.EXTENDED);
-    intakeArm.setReference(Constants.intakeDownSetpoint, 0, IntakeArmState.EXTENDED);
+    intakeArm.setReference(Constants.intakeDownSetpoint, 2, IntakeArmState.EXTENDED);
   }
 }

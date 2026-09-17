@@ -87,7 +87,7 @@ public class IntakeArm extends SubsystemBase {
   // }
 
   public void setReference(double setpoint, double ff, IntakeArmState state) {
-    intakeArm.setControl(PIDIntakeArm.withPosition(setpoint).withVelocity(ff));
+    intakeArm.setControl(PIDIntakeArm.withPosition(setpoint).withFeedForward(ff));
     curSetpoint = setpoint;
     intakeArmState = state;
   }

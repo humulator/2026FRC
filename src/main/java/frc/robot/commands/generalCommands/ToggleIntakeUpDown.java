@@ -28,7 +28,7 @@ public class ToggleIntakeUpDown extends InstantCommand {
     if (intakeArm.getIntakeState() == IntakeArmState.EXTENDED) {
       intakeArm.setReference(Constants.intakeUpSetpoint, 0, IntakeArmState.RETRACTED);
     } else {
-      intakeArm.setReference(Constants.intakeDownSetpoint, 0, IntakeArmState.EXTENDED);
+      intakeArm.setReference(Constants.intakeDownSetpoint, 2, IntakeArmState.EXTENDED);
     }
   }
 }
